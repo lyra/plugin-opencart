@@ -21,15 +21,26 @@
  * @copyright 2014-2016 Lyra Network and contributors
  * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
  * @version   2.1.0 (revision 67770)
- */
-?>
+*/
 
-<form action="<?php echo str_replace('&', '&amp;', $payzen_form_action); ?>" method="POST" id="<?php echo $payzen_form_id; ?>">
-	<?php echo $payzen_form_fields; ?>
+require_once 'payzen.php';
 
-	<div class="buttons">
-		<div class="pull-right">
-			<input type="submit" value="<?php echo $button_confirm; ?>" class="btn btn-primary" />
-		</div>
-	</div>
-</form>
+class ModelPaymentPayzenMulti extends  ModelPaymentPayzen {
+
+	public function __construct($params) {
+		parent::__construct($params);
+		$this->name = 'payzen_multi';
+	}
+
+	protected function getHtmlTitle() {
+		$title = $this->getTitle();
+		$logo = '<img src="catalog/view/theme/default/image/payzen_multi.png" alt="PayZen" title="'.$title.'" style="height: 30px;" />';
+
+		return $logo.' '.$title;
+	}
+
+	protected function getTitle() {
+		$this->load->language('payment/payzen');
+		return sprintf($this->language->get('text_'.$this->name.'_title'), $this->config->get($this->name.'_count'));
+	}
+}
