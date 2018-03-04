@@ -1,6 +1,6 @@
 <?php
 /**
- * PayZen V2-Payment Module version 2.1.0 for OpenCart 2.0-2.2. Support contact : support@payzen.eu.
+ * PayZen V2-Payment Module version 3.0.0 for OpenCart 2.3.x. Support contact : support@payzen.eu.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,58 +18,57 @@
  * @category  payment
  * @package   payzen
  * @author    Lyra Network (http://www.lyra-network.com/)
- * @copyright 2014-2016 Lyra Network and contributors
+ * @copyright 2014-2017 Lyra Network and contributors
  * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
- * @version   2.1.0 (revision 67770)
  */
 
 if (! class_exists('PayzenCurrency', false)) {
 
-	/**
-	 * Class representing a currency, used for converting alpha/numeric ISO codes and float/integer amounts.
-	 */
-	class PayzenCurrency
-	{
+    /**
+     * Class representing a currency, used for converting alpha/numeric ISO codes and float/integer amounts.
+     */
+    class PayzenCurrency
+    {
 
-		private $alpha3;
-		private $num;
-		private $decimals;
+        private $alpha3;
+        private $num;
+        private $decimals;
 
-		public function __construct($alpha3, $num, $decimals = 2)
-		{
-			$this->alpha3 = $alpha3;
-			$this->num = $num;
-			$this->decimals = $decimals;
-		}
+        public function __construct($alpha3, $num, $decimals = 2)
+        {
+            $this->alpha3 = $alpha3;
+            $this->num = $num;
+            $this->decimals = $decimals;
+        }
 
-		public function convertAmountToInteger($float)
-		{
-			$coef = pow(10, $this->decimals);
+        public function convertAmountToInteger($float)
+        {
+            $coef = pow(10, $this->decimals);
 
-			$amount = $float * $coef;
-			return (int) (string) $amount; // cast amount to string (to avoid rounding) than return it as int
-		}
+            $amount = $float * $coef;
+            return (int) (string) $amount; // cast amount to string (to avoid rounding) than return it as int
+        }
 
-		public function convertAmountToFloat($integer)
-		{
-			$coef = pow(10, $this->decimals);
+        public function convertAmountToFloat($integer)
+        {
+            $coef = pow(10, $this->decimals);
 
-			return ((float) $integer) / $coef;
-		}
+            return ((float) $integer) / $coef;
+        }
 
-		public function getAlpha3()
-		{
-			return $this->alpha3;
-		}
+        public function getAlpha3()
+        {
+            return $this->alpha3;
+        }
 
-		public function getNum()
-		{
-			return $this->num;
-		}
+        public function getNum()
+        {
+            return $this->num;
+        }
 
-		public function getDecimals()
-		{
-			return $this->decimals;
-		}
-	}
+        public function getDecimals()
+        {
+            return $this->decimals;
+        }
+    }
 }
