@@ -22,14 +22,54 @@
  * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
  * @version   2.1.0 (revision 67770)
  */
-?>
 
-<form action="<?php echo str_replace('&', '&amp;', $payzen_form_action); ?>" method="POST" id="<?php echo $payzen_form_id; ?>">
-	<?php echo $payzen_form_fields; ?>
+if (! class_exists('PayzenCurrency', false)) {
 
-	<div class="buttons">
-		<div class="pull-right">
-			<input type="submit" value="<?php echo $button_confirm; ?>" class="btn btn-primary" />
-		</div>
-	</div>
-</form>
+	/**
+	 * Class representing a currency, used for converting alpha/numeric ISO codes and float/integer amounts.
+	 */
+	class PayzenCurrency
+	{
+
+		private $alpha3;
+		private $num;
+		private $decimals;
+
+		public function __construct($alpha3, $num, $decimals = 2)
+		{
+			$this->alpha3 = $alpha3;
+			$this->num = $num;
+			$this->decimals = $decimals;
+		}
+
+		public function convertAmountToInteger($float)
+		{
+			$coef = pow(10, $this->decimals);
+
+			$amount = $float * $coef;
+			return (int) (string) $amount; // cast amount to string (to avoid rounding) than return it as int
+		}
+
+		public function convertAmountToFloat($integer)
+		{
+			$coef = pow(10, $this->decimals);
+
+			return ((float) $integer) / $coef;
+		}
+
+		public function getAlpha3()
+		{
+			return $this->alpha3;
+		}
+
+		public function getNum()
+		{
+			return $this->num;
+		}
+
+		public function getDecimals()
+		{
+			return $this->decimals;
+		}
+	}
+}

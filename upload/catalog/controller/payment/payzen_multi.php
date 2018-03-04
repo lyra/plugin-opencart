@@ -22,14 +22,38 @@
  * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
  * @version   2.1.0 (revision 67770)
  */
-?>
 
-<form action="<?php echo str_replace('&', '&amp;', $payzen_form_action); ?>" method="POST" id="<?php echo $payzen_form_id; ?>">
-	<?php echo $payzen_form_fields; ?>
+require_once('payzen.php');
 
-	<div class="buttons">
-		<div class="pull-right">
-			<input type="submit" value="<?php echo $button_confirm; ?>" class="btn btn-primary" />
-		</div>
-	</div>
-</form>
+class ControllerPaymentPayzenMulti extends ControllerPaymentPayzen {
+
+	public function __construct($params) {
+		parent::__construct($params);
+
+		$this->name = 'payzen_multi';
+	}
+
+	protected function getPayzenRequest() {
+		$payzenRequest = parent::getPayzenRequest();
+
+		if($payzenRequest->get('amount')) {
+			$currency = PayzenApi::findCurrencyByNumCode($payzenRequest->get('currency'));
+			$amount = $currency->convertAmountToFloat($payzenRequest->get('amount'));
+
+			// multi payment options
+			$configFirst = $this->config->get('payzen_multi_first');
+			$first = $configFirst ?
+					$currency->convertAmountToInteger($configFirst / 100 * $amount) :
+					null;
+
+			$payzenRequest->setMultiPayment(
+					null /* use already set amount */,
+					$first,
+					$this->config->get('payzen_multi_count'),
+					$this->config->get('payzen_multi_period')
+			);
+		}
+
+		return $payzenRequest;
+	}
+}
