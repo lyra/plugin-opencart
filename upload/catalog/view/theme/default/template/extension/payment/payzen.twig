@@ -1,5 +1,4 @@
-<?php
-/**
+{#
  * PayZen V2-Payment Module version 4.0.0 for OpenCart 3.x. Support contact : support@payzen.eu.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,34 +19,14 @@
  * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
  * @category  payment
  * @package   payzen
- */
+ #}
 
-require_once 'payzen.php';
+<form action="{{ payzen_form_action }}" method="POST" id={{ payzen_form_id }}">
+  {{ payzen_form_fields }}
 
-class ModelExtensionPaymentPayzenMulti extends  ModelExtensionPaymentPayzen
-{
-
-    public function __construct($params)
-    {
-        parent::__construct($params);
-
-        $this->name = 'payzen_multi';
-    }
-
-    protected function getHtmlTitle()
-    {
-        $title = $this->getTitle();
-        $logo = '<img src="catalog/view/theme/default/image/payzen_multi.png" alt="PayZen" title="' . $title . '" style="height: 30px;" />';
-
-        return $logo.' '.$title;
-    }
-
-    protected function getTitle()
-    {
-        $this->load->language('extension/payment/payzen');
-        return sprintf(
-            $this->language->get('text_' . $this->prefix . $this->name . '_title'),
-            $this->config->get($this->prefix . $this->name . '_count')
-        );
-    }
-}
+  <div class="buttons">
+    <div class="pull-right">
+      <input type="submit" value="{{ button_confirm }}" class="btn btn-primary" />
+    </div>
+  </div>
+</form>
