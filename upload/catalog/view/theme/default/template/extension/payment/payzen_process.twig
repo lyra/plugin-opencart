@@ -1,0 +1,79 @@
+{#
+ * PayZen V2-Payment Module version 4.0.0 for OpenCart 3.x. Support contact : support@payzen.eu.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @author    Lyra Network (http://www.lyra-network.com/)
+ * @copyright 2014-2018 Lyra Network and contributors
+ * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
+ * @category  payment
+ * @package   payzen
+ #}
+
+{{ header }}
+
+<div class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+      <li>
+      {% if breadcrumb.href is defined %}
+        <a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+      {% else %}
+        <span style="color: #23a1d1;">{{ breadcrumb.text }}</span>
+      {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="row">
+    {{ column_left }}
+
+    {% if column_left and column_right %}
+      {% set class = 'col-sm-6'%}
+    {% elseif column_left or column_right %}
+      {% set class = 'col-sm-9'%}
+    {% else %}
+      {% set class = 'col-sm-12'%}
+    {% endif %}
+
+    <div id="content" class="{{ class }}">
+      {{ content_top }}
+
+      <h1>{{ heading_title }}</h1>
+      {% if text_payment_payzen_pass_to_prod is defined  %}
+        <div class="alert alert-success">{{ text_payment_payzen_pass_to_prod }}</div><br ∕>
+      {% endif %}
+      
+      {% if text_payment_payzen_url_check is defined  %}
+        <div class="alert alert-warning">{{ text_payment_payzen_url_check }}</div><br ∕>
+      {% endif %}
+
+      {{ text_message }}
+
+      {% for key, value in payzen_data %}
+        <p><b>{{ key }} : </b>{{ value }}</p>
+      {% endfor %}
+
+      <div class="buttons">
+        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
+      </div>
+
+      {{ content_bottom }}
+    </div>
+
+    {{ column_right }}
+  </div>
+</div>
+
+{{ footer }}
