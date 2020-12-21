@@ -1,29 +1,30 @@
 <?php
 /**
- * PayZen V2-Payment Module version 4.0.0 for OpenCart 3.x. Support contact : support@payzen.eu.
+ * Copyright © Lyra Network.
+ * This file is part of PayZen plugin for OpenCart See COPYING.md for license details.
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @author    Lyra Network (http://www.lyra-network.com/)
- * @copyright 2014-2018 Lyra Network and contributors
- * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
- * @category  payment
- * @package   payzen
+ * @author     Lyra Network <https://www.lyra.com>
+ * @copyright  Lyra Network
+ * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
 class PayzenTools
 {
+    private static $GATEWAY_NAME = 'PayZen';
+    private static $BACKOFFICE_NAME = 'PayZen';
+    private static $GATEWAY_URL = 'https://secure.payzen.eu/vads-payment/';
+    private static $SITE_ID = '12345678';
+    private static $KEY_TEST = '1111111111111111';
+    private static $KEY_PROD = '2222222222222222';
+    private static $CTX_MODE = 'TEST';
+    private static $SIGN_ALGO = 'SHA-256';
+    private static $LANGUAGE = 'fr';
+
+    private static $CMS_IDENTIFIER = 'OpenCart_3.x';
+    private static $SUPPORT_EMAIL = 'support@payzen.eu';
+    private static $PLUGIN_VERSION = '4.1.0';
+    private static $GATEWAY_VERSION = 'V2';
+
     public static $plugin_features = array(
         'qualif' => false,
         'prodfaq' => true,
@@ -32,4 +33,17 @@ class PayzenTools
 
         'multi' => true
     );
+
+    public static function getDefault($name)
+    {
+        if (! is_string($name)) {
+            return '';
+        }
+
+        if (! isset(self::$$name)) {
+            return '';
+        }
+
+        return self::$$name;
+    }
 }
