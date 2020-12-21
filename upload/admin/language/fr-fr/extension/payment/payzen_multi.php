@@ -1,50 +1,40 @@
 <?php
 /**
- * PayZen V2-Payment Module version 3.0.0 for OpenCart 2.3.x. Support contact : support@payzen.eu.
+ * Copyright © Lyra Network.
+ * This file is part of PayZen plugin for OpenCart. See COPYING.md for license details.
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @category  payment
- * @package   payzen
- * @author    Lyra Network (http://www.lyra-network.com/)
- * @copyright 2014-2017 Lyra Network and contributors
- * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
+ * @author    Lyra Network <https://www.lyra.com>
+ * @copyright Lyra Network
+ * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
 require_once 'payzen.php';
 
-// Headings
-$_['heading_title'] = 'PayZen - Paiement en plusieurs fois par carte bancaire';
-$_['text_edit'] = 'Editer PayZen - Paiement en plusieurs fois par carte bancaire';
+// Headings.
+$_['heading_title'] = 'PayZen - Paiement en plusieurs fois';
+$_['text_edit'] = 'Modifier PayZen - Paiement en plusieurs fois';
 
-// Text
-$_['text_update_success'] = 'F&eacute;licitations, vous avez modifi&eacute; les d&eacute;tails du module <b>PayZen - Paiement en plusieurs fois par carte bancaire</b> avec succ&egrave;s !';
-$_['text_payzen_multi'] = '<a href="http://www.lyra-network.com" target="_blank"><img src="view/image/payment/payzen.png" alt="PayZen" title="PayZen - Paiement en plusieurs fois par carte bancaire" style="border: 1px solid #EEEEEE; width: 90px;" /></a>';
+// Text.
+$_['text_update_success'] = 'Félicitations, vous avez modifié les détails du module <b>PayZen - Paiement en plusieurs fois</b> avec succès!';
+$_['text_payzen_multi'] = '<a href="https://www.lyra.com" target="_blank"><img src="view/image/payment/payzen.png" alt="PayZen" style="border: 1px solid #EEEEEE; width: 90px;" /></a>';
 
-// Errors
-$_['error_payzen_multi_validation'] = 'Avertissement: le champ &laquo;%s&raquo; est invalide.';
+// Errors.
+$_['error_payzen_multi_validation'] = 'Avertissement: le champ « %s » est invalide.';
 
-// PayZen backend tabs and sections
+// Gateway backend tabs and sections.
 $_['tab_payzen_specific'] ='PAIEMENT EN PLUSIEURS FOIS';
 
 $_['section_payzen_multi_options'] = 'OPTIONS DE PAIEMENT';
 
-// PayZen multi payment options
-$_['entry_payzen_first'] = 'Premier paiement';
-$_['entry_payzen_count'] = 'Nombre de paiements';
-$_['entry_payzen_period'] = 'P&eacute;riode';
+// Gateway multi payment options.
+$_['entry_payzen_first'] = '1ère échéance';
+$_['entry_payzen_count'] = 'Nombre';
+$_['entry_payzen_period'] = 'Période';
 
-$_['desc_payzen_first'] = 'Montant du premier paiement, en pourcentage du montant total. Si vide, tous les paiements auront le même montant.';
-$_['desc_payzen_count'] = 'Nombre total de paiements.';
-$_['desc_payzen_period'] = 'D&eacute;lai en jours entre deux paiements.';
+$_['desc_payzen_first'] = 'Montant de la première échéance en pourcentage du total. Si vide, toutes les échéances auront le même montant.';
+$_['desc_payzen_count'] = 'Nombre total d\'échéances.';
+$_['desc_payzen_period'] = 'Délai entre deux échéances (en jours).';
+
+// Gateway multi payment restriction warning.
+$_['text_payzen_multi_restriction_warn'] = 'ATTENTION: L\'activation de la fonctionnalité de paiement en nfois est soumise à accord préalable de Société Générale.<br />Si vous activez cette fonctionnalité alors que vous ne disposez pas de cette option, une erreur 10000 – INSTALLMENTS_NOT_ALLOWED ou 07 - PAYMENT_CONFIG sera générée et l\'acheteur sera dans l\'incapacité de payer.';
+$_['text_payzen_multi_not_available'] = 'Le paiement PayZen en plusieurs fois n\'est pas disponible pour votre offre.';

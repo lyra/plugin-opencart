@@ -1,2 +1,0 @@
-3.0.0, 2017-03-03:
-- Creation of new module compatible with OpenCart 2.3.x versions.

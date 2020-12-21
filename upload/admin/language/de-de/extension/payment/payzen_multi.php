@@ -1,50 +1,40 @@
 <?php
 /**
- * PayZen V2-Payment Module version 3.0.0 for OpenCart 2.3.x. Support contact : support@payzen.eu.
+ * Copyright © Lyra Network.
+ * This file is part of PayZen plugin for OpenCart. See COPYING.md for license details.
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @category  payment
- * @package   payzen
- * @author    Lyra Network (http://www.lyra-network.com/)
- * @copyright 2014-2017 Lyra Network and contributors
- * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
+ * @author    Lyra Network <https://www.lyra.com>
+ * @copyright Lyra Network
+ * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
 require_once 'payzen.php';
 
-// Headings
-$_['heading_title'] = 'PayZen - Ratenzahlung mit EC-/Kreditkarte';
-$_['text_edit'] = 'Edit PayZen - Ratenzahlung mit EC-/Kreditkarte';
+// Headings.
+$_['heading_title'] = 'PayZen - Ratenzahlung';
+$_['text_edit'] = 'Edit PayZen - Ratenzahlung';
 
-// Text
-$_['text_update_success'] = 'Congratulations, you have successfully modified <b>PayZen - Ratenzahlung mit EC-/Kreditkarte</b> modulsdetailen !';
-$_['text_payzen_multi'] = '<a href="http://www.lyra-network.com" target="_blank"><img src="view/image/payment/payzen.png" alt="PayZen" title="PayZen - Ratenzahlung mit EC-/Kreditkarte" style="border: 1px solid #EEEEEE; width: 90px;" /></a>';
+// Text.
+$_['text_update_success'] = 'Congratulations, you have successfully modified <b>PayZen - Ratenzahlung</b> modulsdetailen!';
+$_['text_payzen_multi'] = '<a href="https://www.lyra.com" target="_blank"><img src="view/image/payment/payzen.png" alt="PayZen" style="border: 1px solid #EEEEEE; width: 90px;" /></a>';
 
-$_['error_payzen_multi_validation'] = 'Warnung: Das feld &laquo;%s&raquo; ist ung&uuml;ltig.';
+// Errors.
+$_['error_payzen_multi_validation'] = 'Warnung: Das feld « %s » ist ungültig.';
 
-// PayZen backend tabs & sections
+// Gateway backend tabs & sections.
 $_['tab_payzen_specific'] ='RATENZAHLUNG';
 
 $_['section_payzen_multi_options'] = 'ZAHLUNGSOPTIONEN';
 
-
-// PayZen multi payment options
-$_['entry_payzen_first'] = 'Erste Zahlung';
-$_['entry_payzen_count'] = 'Zahl';
+// Gateway multi payment options.
+$_['entry_payzen_first'] = '1. Rate';
+$_['entry_payzen_count'] = 'Anzahl';
 $_['entry_payzen_period'] = 'Zeitraum';
 
-$_['desc_payzen_first'] = 'Betrag der ersten Zahlung ins gesamtes Prozent. Wenn leer, alle Zahlungen werden den gleichen Betrag haben.';
-$_['desc_payzen_count'] = 'Gesamte Zahl von Zahlungen.';
-$_['desc_payzen_period'] = 'Zeit in Tages zwischen zwei Zahlungen.';
+$_['desc_payzen_first'] = 'Betrag der ersten Rate insgesamtes Prozent. Falls dies nicht angegeben ist, haben alle Raten den gleichen Betrag.';
+$_['desc_payzen_count'] = 'Gesamtanzahl der Raten.';
+$_['desc_payzen_period'] = 'Zeitraum zwischen zwei Raten (in Tagen).';
+
+// Gateway multi payment restriction warning.
+$_['text_payzen_multi_restriction_warn'] = 'ATTENTION: The payment in installments feature activation is subject to the prior agreement of Société Générale.<br />If you enable this feature while you have not the associated option, an error 10000 – INSTALLMENTS_NOT_ALLOWED or 07 - PAYMENT_CONFIG will occur and the buyer will not be able to pay.';
+$_['text_payzen_multi_not_available'] = 'The PayZen payment in installments is not available for your offer.';
