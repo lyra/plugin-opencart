@@ -1,25 +1,11 @@
 <?php
 /**
- * PayZen V2-Payment Module version 4.0.0 for OpenCart 3.x. Support contact : support@payzen.eu.
+ * Copyright © Lyra Network.
+ * This file is part of PayZen plugin for OpenCart See COPYING.md for license details.
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @author    Lyra Network (http://www.lyra-network.com/)
- * @copyright 2014-2018 Lyra Network and contributors
- * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
- * @category  payment
- * @package   payzen
+ * @author     Lyra Network <https://www.lyra.com>
+ * @copyright  Lyra Network
+ * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
 class ModelExtensionPaymentPayzen extends Model
@@ -53,7 +39,7 @@ class ModelExtensionPaymentPayzen extends Model
     protected function checkMethod($address, $total)
     {
         if (! $this->config->get($this->prefix . $this->name . '_status')) {
-            // disabled module
+            // Disabled module.
             return false;
         }
 
@@ -63,11 +49,11 @@ class ModelExtensionPaymentPayzen extends Model
         );
 
         if ($this->config->get($this->prefix . $this->name . '_geo_zone') && ! $query->num_rows) {
-            // if geo zone is configured and user country do not belong to module geo zone
+            // If geo zone is configured and user country do not belong to module geo zone.
             return false;
         }
 
-        // check the customer's credit
+        // Check the customer's credit.
         if ($this->config->get('credit_status')) {
             $credit = $this->customer->getBalance();
 
@@ -78,19 +64,19 @@ class ModelExtensionPaymentPayzen extends Model
             }
         }
 
-        // load PayzenApi class
+        // Load PayzenApi class.
         require_once(DIR_SYSTEM.'library/payzen/api.php');
 
-        // check the current currency support
+        // Check the current currency support.
         $currencyObj = PayzenApi::findCurrencyByAlphaCode($this->session->data['currency']);
-        if ($currencyObj == null) {
+        if (! $currencyObj) {
             return false;
         }
 
         $min = $this->config->get($this->prefix . $this->name . '_min_amount');
         $max = $this->config->get($this->prefix . $this->name . '_max_amount');
 
-        // check the amount authorized by the module
+        // Check the amount authorized by the module.
         if (($min && ($total < $min)) || ($max && ($total > $max))) {
             return false;
         }

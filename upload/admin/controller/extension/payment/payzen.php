@@ -1,25 +1,11 @@
 <?php
 /**
- * PayZen V2-Payment Module version 4.0.0 for OpenCart 3.x. Support contact : support@payzen.eu.
+ * Copyright © Lyra Network.
+ * This file is part of PayZen plugin for OpenCart See COPYING.md for license details.
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @author    Lyra Network (http://www.lyra-network.com/)
- * @copyright 2014-2018 Lyra Network and contributors
- * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
- * @category  payment
- * @package   payzen
+ * @author     Lyra Network <https://www.lyra.com>
+ * @copyright  Lyra Network
+ * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
 class ControllerExtensionPaymentPayzen extends Controller
@@ -29,7 +15,7 @@ class ControllerExtensionPaymentPayzen extends Controller
     protected $prefix;
     protected $plugin_features;
 
-    // all configurable parameters
+    // All configurable parameters.
     protected $configParams = array(
         'status', 'sort_order', 'geo_zone', 'site_id', 'key_test', 'key_prod', 'ctx_mode', 'sign_algo', 'platform_url', 'language',
         'available_languages', 'capture_delay', 'validation_mode', 'payment_cards', '3ds_min_amount', 'min_amount',
@@ -61,7 +47,7 @@ class ControllerExtensionPaymentPayzen extends Controller
 
         $this->load->model('setting/setting');
 
-        if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+        if (($this->request->server['REQUEST_METHOD'] === 'POST') && $this->validate()) {
             if (isset($this->request->post[$this->prefix . $this->name . '_available_languages']) && ! empty($this->request->post[$this->prefix . $this->name . '_available_languages'])) {
                 $this->request->post[$this->prefix . $this->name . '_available_languages'] = implode(';', $this->request->post[$this->prefix . $this->name . '_available_languages']);
             } else {
@@ -74,12 +60,18 @@ class ControllerExtensionPaymentPayzen extends Controller
                 $this->request->post[$this->prefix . $this->name . '_payment_cards'] = '';
             }
 
+            if ($this->plugin_features['qualif']) {
+                $this->request->post[$this->prefix . $this->name . '_ctx_mode'] = 'PRODUCTION';
+            }
+
             $this->model_setting_setting->editSetting($this->prefix . $this->name, $this->request->post);
             $this->session->data['success'] = $this->language->get('text_update_success');
             $this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=payment', 'SSL'));
         }
 
-        // load language constants
+        $data = array();
+
+        // Load language constants.
         $data['heading_title'] = $this->language->get('heading_title');
 
         $data['text_payment_payzen_yes'] = $this->language->get('text_payment_payzen_yes');
@@ -89,6 +81,10 @@ class ControllerExtensionPaymentPayzen extends Controller
         $data['text_payment_payzen_default'] = $this->language->get('text_payment_payzen_default');
         $data['text_payment_payzen_automatic'] = $this->language->get('text_payment_payzen_automatic');
         $data['text_payment_payzen_manual'] = $this->language->get('text_payment_payzen_manual');
+
+        $data['text_payment_payzen_support_email'] = PayzenTools::getDefault('SUPPORT_EMAIL');
+        $data['text_payment_payzen_contrib_version'] = PayzenTools::getDefault('PLUGIN_VERSION');
+        $data['text_payment_payzen_gateway_version'] = PayzenTools::getDefault('GATEWAY_VERSION');
 
         $data['section_payment_payzen_module_info'] = $this->language->get('section_payment_payzen_module_info');
         $data['section_payment_payzen_payment_access'] = $this->language->get('section_payment_payzen_payment_access');
@@ -110,13 +106,13 @@ class ControllerExtensionPaymentPayzen extends Controller
 
         require_once(DIR_SYSTEM . 'library/payzen/api.php');
 
-        // use supported API languages
+        // Use supported API languages.
         $data[$this->prefix . $this->name . '_language_options'] = array();
         foreach (PayzenApi::getSupportedLanguages() as $code => $label) {
             $data[$this->prefix . $this->name . '_language_options'][$code] = $this->language->get('text_payment_payzen_' . strtolower($label));
         }
 
-        // use supported API card types
+        // Use supported API card types.
         $data[$this->prefix . $this->name . '_payment_card_options'] = PayzenApi::getSupportedCardTypes();
 
         $data['text_edit'] = $this->language->get('text_edit');
@@ -154,15 +150,15 @@ class ControllerExtensionPaymentPayzen extends Controller
         $data[$this->prefix . 'payzen_notification_url'] = HTTP_CATALOG . 'index.php?route=extension/payment/payzen/callback';
 
         foreach ($this->configParams as $param) {
-            // load config parameter values
+            // Load config parameter values.
             if (isset($this->request->post[$this->prefix . $this->name . '_' . $param])) {
                 $data[$this->prefix . $this->name . '_' . $param] = $this->request->post[$this->prefix . $this->name . '_' . $param];
             } else {
-                // original value from database
+                // Original value from database.
                 $data[$this->prefix . $this->name . '_' . $param] = $this->config->get($this->prefix . $this->name . '_' . $param);
             }
 
-            // load language constants
+            // Load language constants.
             $data['entry_payment_payzen_' . $param] = $this->language->get('entry_payment_payzen_' . $param);
             $data['desc_payment_payzen_' . $param] = $this->language->get('desc_payment_payzen_' . $param);
 
@@ -171,11 +167,11 @@ class ControllerExtensionPaymentPayzen extends Controller
             }
         }
 
-        // load order statuses
+        // Load order statuses.
         $this->load->model('localisation/order_status');
         $data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
 
-        // load geographic zones
+        // Load geographic zones.
         $this->load->model('localisation/geo_zone');
         $data['geo_zones'] = $this->model_localisation_geo_zone->getGeoZones();
 
@@ -183,7 +179,7 @@ class ControllerExtensionPaymentPayzen extends Controller
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
-        // load plugin features array
+        // Load plugin features array.
         $data['payzen_plugin_features'] = $this->plugin_features;
 
         return $data;
@@ -201,23 +197,22 @@ class ControllerExtensionPaymentPayzen extends Controller
     protected function getDefaultValues()
     {
         $data = array();
-
         $data[$this->prefix . $this->name . '_status'] = '1';
         $data[$this->prefix . $this->name . '_sort_order'] = '1';
         $data[$this->prefix . $this->name . '_geo_zone'] = '0';
         $data[$this->prefix . $this->name . '_enable_logs'] = '1';
-        $data[$this->prefix . $this->name . '_site_id'] = '12345678';
-        $data[$this->prefix . $this->name . '_key_test'] = '1111111111111111';
-        $data[$this->prefix . $this->name . '_key_prod'] = '2222222222222222';
-        $data[$this->prefix . $this->name . '_ctx_mode'] = 'TEST';
-        $data[$this->prefix . $this->name . '_sign_algo'] = 'SHA-256';
-        $data[$this->prefix . $this->name . '_platform_url'] = 'https://secure.payzen.eu/vads-payment/';
-        $data[$this->prefix . $this->name . '_language'] = 'fr';
+        $data[$this->prefix . $this->name . '_site_id'] =  PayzenTools::getDefault('SITE_ID');
+        $data[$this->prefix . $this->name . '_key_test'] = PayzenTools::getDefault('KEY_TEST');
+        $data[$this->prefix . $this->name . '_key_prod'] = PayzenTools::getDefault('KEY_PROD');
+        $data[$this->prefix . $this->name . '_ctx_mode'] = PayzenTools::getDefault('CTX_MODE');
+        $data[$this->prefix . $this->name . '_sign_algo'] = PayzenTools::getDefault('SIGN_ALGO');
+        $data[$this->prefix . $this->name . '_platform_url'] = PayzenTools::getDefault('GATEWAY_URL');
+        $data[$this->prefix . $this->name . '_language'] = PayzenTools::getDefault('LANGUAGE');
         $data[$this->prefix . $this->name . '_redirect_enabled'] = '0';
         $data[$this->prefix . $this->name . '_redirect_success_timeout'] = '5';
-        $data[$this->prefix . $this->name . '_redirect_success_message'] = 'Redirection to shop in a few seconds...';
+        $data[$this->prefix . $this->name . '_redirect_success_message'] = $this->language->get('text_payment_payzen_redirect_message');
         $data[$this->prefix . $this->name . '_redirect_error_timeout'] = '5';
-        $data[$this->prefix . $this->name . '_redirect_error_message'] = 'Redirection to shop in a few seconds...';
+        $data[$this->prefix . $this->name . '_redirect_error_message'] = $this->language->get('text_payment_payzen_redirect_message');
         $data[$this->prefix . $this->name . '_return_mode'] = 'GET';
         $data[$this->prefix . $this->name . '_order_status_failed'] = '10';
         $data[$this->prefix . $this->name . '_order_status_success'] = '5';
@@ -230,6 +225,7 @@ class ControllerExtensionPaymentPayzen extends Controller
 
     public function install()
     {
+        $this->load->language('extension/payment/' . $this->name);
         $this->load->model('setting/setting');
         $this->model_setting_setting->editSetting($this->prefix . $this->name, $this->getDefaultValues());
         $this->load->controller('extension/payment/' . $this->name);

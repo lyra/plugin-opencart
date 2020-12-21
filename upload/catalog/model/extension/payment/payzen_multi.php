@@ -1,36 +1,25 @@
 <?php
 /**
- * PayZen V2-Payment Module version 4.0.0 for OpenCart 3.x. Support contact : support@payzen.eu.
+ * Copyright © Lyra Network.
+ * This file is part of PayZen plugin for OpenCart See COPYING.md for license details.
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @author    Lyra Network (http://www.lyra-network.com/)
- * @copyright 2014-2018 Lyra Network and contributors
- * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
- * @category  payment
- * @package   payzen
+ * @author     Lyra Network <https://www.lyra.com>
+ * @copyright  Lyra Network
+ * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
 require_once 'payzen.php';
 
 class ModelExtensionPaymentPayzenMulti extends  ModelExtensionPaymentPayzen
 {
+    protected $plugin_features;
 
     public function __construct($params)
     {
         parent::__construct($params);
 
+        require_once(DIR_SYSTEM . 'library/payzen/tools.php');
+        $this->plugin_features = PayzenTools::$plugin_features;
         $this->name = 'payzen_multi';
     }
 
@@ -39,7 +28,7 @@ class ModelExtensionPaymentPayzenMulti extends  ModelExtensionPaymentPayzen
         $title = $this->getTitle();
         $logo = '<img src="catalog/view/theme/default/image/payzen_multi.png" alt="PayZen" title="' . $title . '" style="height: 30px;" />';
 
-        return $logo.' '.$title;
+        return $logo . ' ' . $title;
     }
 
     protected function getTitle()
@@ -49,5 +38,14 @@ class ModelExtensionPaymentPayzenMulti extends  ModelExtensionPaymentPayzen
             $this->language->get('text_' . $this->prefix . $this->name . '_title'),
             $this->config->get($this->prefix . $this->name . '_count')
         );
+    }
+
+    protected function checkMethod($address, $total)
+    {
+        if (! $this->plugin_features['multi']) {
+            return false;
+        }
+
+        return parent::checkMethod($address, $total);
     }
 }

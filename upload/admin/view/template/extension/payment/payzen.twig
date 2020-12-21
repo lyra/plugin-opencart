@@ -1,24 +1,10 @@
 {#
- * PayZen V2-Payment Module version 4.0.0 for OpenCart 3.x. Support contact : support@payzen.eu.
+ * Copyright © Lyra Network.
+ * This file is part of PayZen plugin for OpenCart See COPYING.md for license details.
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @author    Lyra Network (http://www.lyra-network.com/)
- * @copyright 2014-2018 Lyra Network and contributors
- * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
- * @category  payment
- * @package   payzen
+ * @author     Lyra Network <https://www.lyra.com>
+ * @copyright  Lyra Network
+ * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  #}
 
 {{ header }}{{ column_left }}
@@ -33,7 +19,7 @@
       <h1><img src="view/image/payment/payzen.png" alt="" />{{ heading_title }}</h1><br />
       <ul class="breadcrumb">
       {% for breadcrumb in breadcrumbs %}
-        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+      	<li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
       {% endfor %}
       </ul>
     </div>
@@ -56,28 +42,19 @@
             <legend><font style="font-weight: bold;">{{ section_payment_payzen_module_info }}</font></legend>
             <div class="form-group">
               <label class="col-sm-3 control-label">{{ entry_payment_payzen_developed_by }}</label>
-              <label class="control-label"><b><a href="http://www.lyra-network.com/" target="_blank">Lyra network</a></b></label>
+              <label class="control-label"><b><a href="https://www.lyra.com" target="_blank">Lyra network</a></b></label>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label">{{ entry_payment_payzen_contact_email }}</label>
-              <label class="control-label"><b><a href="mailto:support@payzen.eu">support@payzen.eu</a></b></label>
+              <label class="control-label"><b><a href="mailto:{{ text_payment_payzen_support_email }}">{{ text_payment_payzen_support_email }}</a></b></label>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label">{{ entry_payment_payzen_contrib_version }}</label>
-              <label class="control-label"><b>4.0.0</b></label>
+              <label class="control-label"><b>{{ text_payment_payzen_contrib_version }}</b></label>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label">{{ entry_payment_payzen_gateway_version }}</label>
-              <label class="control-label"><b>V2</b></label>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label" for="payment_payzen_enable_logs"><span data-toggle="tooltip" title="{{ desc_payment_payzen_enable_logs }}">{{ entry_payment_payzen_enable_logs }}</span></label>
-              <div class="col-sm-13">
-                <select id="payment_payzen_enable_logs" name="payment_payzen_enable_logs">
-                  <option {% if payment_payzen_enable_logs == '1' %} selected="selected" {% endif %} value="1">{{ text_enabled }}</option>
-                  <option {% if payment_payzen_enable_logs == '0' %} selected="selected" {% endif %} value="0">{{ text_disabled }}</option>
-                </select>
-              </div>
+              <label class="control-label"><b>{{ text_payment_payzen_gateway_version }}</b></label>
             </div>
           </fieldset>
 
@@ -133,7 +110,7 @@
                 <div class="form-group">
                   <label class="col-sm-3 control-label">{{ entry_payment_payzen_url_check }}</label>
                   <label class="control-label" style="display: inline;">{{ payment_payzen_notification_url }}<br />
-                    <img src="view/image/payment/warn.png" alt="" />
+                    <img src="view/image/payment/warn.png" alt="" style="vertical-align: inherit;"/>
                     <label style="color: red;">{{ desc_payment_payzen_url_check }}</label>
                   </label>
                 </div>
@@ -209,9 +186,9 @@
 
                     {% for code, label in payment_payzen_payment_card_options %}
                       {% if code in payment_payzen_payment_cards %}
-                        <option selected="selected" value="{{ code }}">{{ label }}</option>
+                        <option selected="selected" value="{{ code }}">{{ code }} - {{ label }}</option>
                       {% else %}
-                        <option value="{{ code }}">{{ label }}</option>
+                        <option value="{{ code }}">{{ code }} - {{ label }}</option>
                       {% endif %}
                     {% endfor %}
                     </select>
@@ -297,11 +274,7 @@
                     <input type="text" id="payment_payzen_sort_order" name="payment_payzen_sort_order" placeholder="{{ entry_payment_payzen_sort_order }}" value="{{ payment_payzen_sort_order }}" size="3" />
                   </div>
                 </div>
-              </fieldset>
-
-              <fieldset>
-                <legend><font style="font-weight: bold;">{{ section_payment_payzen_restrictions }}</font></legend>
-                <div class="form-group">
+              	<div class="form-group">
                   <label class="col-sm-3 control-label" for="payment_payzen_geo_zone"><span data-toggle="tooltip" title="{{ desc_payment_payzen_geo_zone }}">{{ entry_payment_payzen_geo_zone }}</span></label>
                   <div class="col-sm-13">
                     <select id="payment_payzen_geo_zone" name="payment_payzen_geo_zone">
@@ -316,6 +289,18 @@
                     </select>
                   </div>
                 </div>
+                <div class="form-group">
+	              <label class="col-sm-3 control-label" for="payment_payzen_enable_logs"><span data-toggle="tooltip" title="{{ desc_payment_payzen_enable_logs }}">{{ entry_payment_payzen_enable_logs }}</span></label>
+	              <div class="col-sm-13">
+	                <select id="payment_payzen_enable_logs" name="payment_payzen_enable_logs">
+	                  <option {% if payment_payzen_enable_logs == '1' %} selected="selected" {% endif %} value="1">{{ text_enabled }}</option>
+	                  <option {% if payment_payzen_enable_logs == '0' %} selected="selected" {% endif %} value="0">{{ text_disabled }}</option>
+	                </select>
+	              </div>
+            	</div>
+              </fieldset>
+              <fieldset>
+                <legend><font style="font-weight: bold;">{{ section_payment_payzen_restrictions }}</font></legend>
                 <div class="form-group"> 
                   <label class="col-sm-3 control-label" for="payment_payzen_min_amount"><span data-toggle="tooltip" title="{{ desc_payment_payzen_min_amount }}">{{ entry_payment_payzen_min_amount }}</span></label>
                   <div class="col-sm-13">
