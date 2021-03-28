@@ -1,3 +1,6 @@
+4.1.2, 2021-03-29:
+- Bug fix: Adapt plugin structure for OpenCart cloud.
+
 4.1.1, 2020-11-05:
 - Bug fix: Fix plugin installation from OpenCart Back Office.
 
