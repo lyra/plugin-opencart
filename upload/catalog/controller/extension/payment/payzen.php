@@ -86,7 +86,7 @@ class ControllerExtensionPaymentPayzen extends Controller
             $amount = $this->currency->format($orderInfo['total'], $orderInfo['currency_code'], $orderInfo['currency_value'], false);
             $info['amount'] = $currency->convertAmountToInteger($amount);
 
-            $info['contrib'] = 'OpenCart_3.x_4.1.1/' . VERSION . '/' . PHP_VERSION;
+            $info['contrib'] = 'OpenCart_3.x_4.1.2/' . VERSION . '/' . PHP_VERSION;
 
             $info['order_info'] = 'session_id=' . $this->session->getId();
 
