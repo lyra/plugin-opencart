@@ -1,3 +1,9 @@
+2.2.0: 2021-05-06:
+- Enable signature algorithm selection (SHA-1 or HMAC-SHA-256).
+- Added Spanish translation.
+- Update some plugin translations.
+- [technical] Manage enabled/disabled features by plugin variant.
+
 2.1.0, 2016-09-19:
 - Bug fix: relative to cleaning session and clearing cart.
 - Bug fix: amount is now converted to current store currency.
