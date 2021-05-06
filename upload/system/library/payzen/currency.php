@@ -1,75 +1,60 @@
 <?php
 /**
- * PayZen V2-Payment Module version 2.1.0 for OpenCart 2.0-2.2. Support contact : support@payzen.eu.
+ * Copyright © Lyra Network.
+ * This file is part of PayZen plugin for OpenCart. See COPYING.md for license details.
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @category  payment
- * @package   payzen
- * @author    Lyra Network (http://www.lyra-network.com/)
- * @copyright 2014-2016 Lyra Network and contributors
- * @license   http://www.gnu.org/licenses/gpl.html  GNU General Public License (GPL v3)
- * @version   2.1.0 (revision 67770)
+ * @author    Lyra Network (https://www.lyra.com/)
+ * @copyright Lyra Network
+ * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
 if (! class_exists('PayzenCurrency', false)) {
 
-	/**
-	 * Class representing a currency, used for converting alpha/numeric ISO codes and float/integer amounts.
-	 */
-	class PayzenCurrency
-	{
+    /**
+     * Class representing a currency, used for converting alpha/numeric ISO codes and float/integer amounts.
+     */
+    class PayzenCurrency
+    {
 
-		private $alpha3;
-		private $num;
-		private $decimals;
+        private $alpha3;
+        private $num;
+        private $decimals;
 
-		public function __construct($alpha3, $num, $decimals = 2)
-		{
-			$this->alpha3 = $alpha3;
-			$this->num = $num;
-			$this->decimals = $decimals;
-		}
+        public function __construct($alpha3, $num, $decimals = 2)
+        {
+            $this->alpha3 = $alpha3;
+            $this->num = $num;
+            $this->decimals = $decimals;
+        }
 
-		public function convertAmountToInteger($float)
-		{
-			$coef = pow(10, $this->decimals);
+        public function convertAmountToInteger($float)
+        {
+            $coef = pow(10, $this->decimals);
 
-			$amount = $float * $coef;
-			return (int) (string) $amount; // cast amount to string (to avoid rounding) than return it as int
-		}
+            $amount = $float * $coef;
+            return (int) (string) $amount; // Cast amount to string (to avoid rounding) than return it as int.
+        }
 
-		public function convertAmountToFloat($integer)
-		{
-			$coef = pow(10, $this->decimals);
+        public function convertAmountToFloat($integer)
+        {
+            $coef = pow(10, $this->decimals);
 
-			return ((float) $integer) / $coef;
-		}
+            return ((float) $integer) / $coef;
+        }
 
-		public function getAlpha3()
-		{
-			return $this->alpha3;
-		}
+        public function getAlpha3()
+        {
+            return $this->alpha3;
+        }
 
-		public function getNum()
-		{
-			return $this->num;
-		}
+        public function getNum()
+        {
+            return $this->num;
+        }
 
-		public function getDecimals()
-		{
-			return $this->decimals;
-		}
-	}
+        public function getDecimals()
+        {
+            return $this->decimals;
+        }
+    }
 }
