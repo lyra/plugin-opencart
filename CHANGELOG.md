@@ -1,4 +1,10 @@
-2.2.0: 2021-05-06:
+2.2.1, 2021-06-28:
+- Do not use vads\_order\_info, use vads\_ext\_info\_* instead.
+- Send the relevant part of the current PHP version in vads\_contrib field.
+- Improve support e-mail display.
+- Update 3DS management option description.
+
+2.2.0, 2021-05-06:
 - Enable signature algorithm selection (SHA-1 or HMAC-SHA-256).
 - Added Spanish translation.
 - Update some plugin translations.

@@ -53,24 +53,24 @@
                    <legend><font style="font-weight: bold;"><?php echo $section_payzen_module_info; ?></font></legend>
                         <div class="form-group">
                         <label class="col-sm-3 control-label"><?php echo $entry_payzen_developed_by; ?></label>
-                        <label class="control-label"><b><a href="https://www.lyra.com/" target="_blank">Lyra network</a></b></label>
+                        <label class="control-label" style="text-align: left;"><b><a href="https://www.lyra.com/" target="_blank">Lyra network</a></b></label>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label"><?php echo $entry_payzen_support_email; ?></label>
-                        <label class="control-label"><b><a href="mailto:<?php echo $text_payzen_support_email; ?>"><?php echo $text_payzen_support_email; ?></a></b></label>
+                        <label class="control-label" style="text-align: left;"><?php echo $text_payzen_support_email; ?></label>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label"><?php echo $entry_payzen_plugin_version; ?></label>
-                        <label class="control-label"><b><?php echo $text_payzen_plugin_version; ?></b></label>
+                        <label class="control-label" style="text-align: left;"><b><?php echo $text_payzen_plugin_version; ?></b></label>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label"><?php echo $entry_payzen_gateway_version; ?></label>
-                        <label class="control-label"><b><?php echo $text_payzen_gateway_version; ?></b></label>
+                        <label class="control-label" style="text-align: left;"><b><?php echo $text_payzen_gateway_version; ?></b></label>
                     </div>
                     <?php if ($payzen_doc_link) { ?>
                         <div class="form-group">
                             <label class="col-sm-3 control-label" style="color: red; text-transform: uppercase;"><?php echo $desc_payzen_doc_link; ?></label>
-                            <label class="control-label"><b><?php echo $payzen_doc_link; ?></b></label>
+                            <label class="control-label" style="text-align: left;"><b><?php echo $payzen_doc_link; ?></b></label>
                         </div>
                     <?php } ?>
                 </fieldset>
