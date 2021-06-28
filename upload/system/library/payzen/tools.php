@@ -25,7 +25,7 @@ class PayzenTools
 
     private static $CMS_IDENTIFIER = 'OpenCart_2.0-2.2';
     private static $SUPPORT_EMAIL = 'support@payzen.eu';
-    private static $PLUGIN_VERSION = '2.2.0';
+    private static $PLUGIN_VERSION = '2.2.1';
     private static $GATEWAY_VERSION = 'V2';
 
     public static $plugin_features = array(

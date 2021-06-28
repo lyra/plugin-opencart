@@ -28,7 +28,7 @@ $_['tab_payzen_orders'] = 'PEDIDOS';
 $_['section_payzen_module_info'] = 'INFORMACI&Oacute;N DEL M&Oacute;DULO';
 $_['section_payzen_payment_access'] = 'ACCESO AL PORTAL DE PAGO';
 $_['section_payzen_payment_page'] = 'PÁGINA DE PAGO';
-$_['section_payzen_selective_3ds'] = '3DS SELECTIVO';
+$_['section_payzen_selective_3ds'] = '3DS PERSONALIZADO';
 $_['section_payzen_return_to_shop'] = 'VOLVER A LA TIENDA';
 $_['section_payzen_module_setting'] = 'CONFIGURACI&Oacute;N DEL M&Oacute;DULO';
 $_['section_payzen_amount_restrictions'] = 'RESTRICCIONES DE MONTO';
@@ -58,7 +58,7 @@ $_['entry_payzen_available_languages'] = 'Idiomas disponible';
 $_['entry_payzen_capture_delay'] = 'Plazo de captura';
 $_['entry_payzen_validation_mode'] = 'Modo de validaci&oacute;n';
 $_['entry_payzen_payment_cards'] = 'Tipos de tarjeta';
-$_['entry_payzen_3ds_min_amount'] = 'Deshabilitar 3DS';
+$_['entry_payzen_3ds_min_amount'] = 'Gestionar el 3DS';
 
 $_['entry_payzen_min_amount'] = 'Monto m&iacute;nimo';
 $_['entry_payzen_max_amount'] = 'Monto m&aacute;ximo';
@@ -95,7 +95,7 @@ $_['desc_payzen_available_languages'] = 'Idiomas disponibles en la p&aacute;gina
 $_['desc_payzen_capture_delay'] = 'El n&uacute;mero de d&iacute;as antes de la captura del pago (ajustable en su Back Office PayZen).';
 $_['desc_payzen_validation_mode'] = 'Si se selecciona manual, deber&aacute; confirmar los pagos manualmente en su Back Office PayZen.';
 $_['desc_payzen_payment_cards'] = 'El tipo(s) de tarjeta que se puede usar para el pago. No haga ninguna selecci&oacute;n para usar la configuraci&oacute;n del portal';
-$_['desc_payzen_3ds_min_amount'] = 'Monto por debajo del cual se deshabilitar&aacute; 3DS. Requiere suscripci&oacute;n a la opci&oacute;n 3DS selectivo. Para m&aacute;s informaci&oacute;n, consulte la documentaci&oacute;n del m&oacute;dulo.';
+$_['desc_payzen_3ds_min_amount'] = 'Monto por debajo del cual el comprador podr&iacute;a estar exento de de la autenticaci&oacute;n fuerte. Requiere suscripci&oacute;n a la opci&oacute;n &laquo;Selective 3DS1&raquo; o a la opci&oacute;n &laquo;Frictionless 3DS2&raquo;. Para m&aacute;s informaci&oacute;n, consulte la documentaci&oacute;n del m&oacute;dulo.';
 
 $_['desc_payzen_min_amount'] = 'Monto m&iacute;nimo para activar este m&eacute;todo de pago.';
 $_['desc_payzen_max_amount'] = 'Monto m&aacute;ximo para activar este m&eacute;todo de pago.';

@@ -28,7 +28,7 @@ $_['tab_payzen_orders'] = 'BESTELLEN';
 $_['section_payzen_module_info'] = 'MODULINFORMATIONEN';
 $_['section_payzen_payment_access'] = 'ZUGANG ZAHLUNGSSCHNITTSTELLE';
 $_['section_payzen_payment_page'] = 'ZAHLUNGSSEITE';
-$_['section_payzen_selective_3ds'] = 'SELEKTIVES 3DS';
+$_['section_payzen_selective_3ds'] = 'CUSTOM 3DS';
 $_['section_payzen_return_to_shop'] = 'ZUR&Uuml;CK ZUM SHOP';
 $_['section_payzen_module_setting'] = 'MODULEINSTELLUNGEN';
 $_['section_payzen_amount_restrictions'] = 'BETRAGSBESCHR&Auml;NKUNGEN';
@@ -58,7 +58,7 @@ $_['entry_payzen_available_languages'] = 'Verf&uuml;gbare Sprachen';
 $_['entry_payzen_capture_delay'] = 'Einzugsfrist';
 $_['entry_payzen_validation_mode'] = 'Best&auml;tigungsmodus';
 $_['entry_payzen_payment_cards'] = 'Art der Kreditkarten';
-$_['entry_payzen_3ds_min_amount'] = '3DS deaktivieren';
+$_['entry_payzen_3ds_min_amount'] = 'Manage 3DS';
 
 $_['entry_payzen_min_amount'] = 'Mindestbetrag';
 $_['entry_payzen_max_amount'] = 'H&ouml;chstbetrag';
@@ -95,7 +95,7 @@ $_['desc_payzen_available_languages'] = 'Verf&uuml;gbare Sprachen der Zahlungsse
 $_['desc_payzen_capture_delay'] = 'Anzahl der Tage bis zum Einzug der Zahlung (Einstellung &uuml;ber Ihr PayZen Back Office).';
 $_['desc_payzen_validation_mode'] = 'Bei manueller Eingabe m&uuml;ssen Sie Zahlungen manuell in Ihrem PayZen Back Office best&auml;tigen.';
 $_['desc_payzen_payment_cards'] = 'Wählen Sie die zur Zahlung verfügbaren Kartentypen aus. Nichts auswählen, um die Einstellungen der Plattform zu verwenden.';
-$_['desc_payzen_3ds_min_amount'] = 'Betrag, unter dem 3DS deaktiviert wird. Muss für die Option Selektives 3DS freigeschaltet sein. Weitere Informationen finden Sie in der Moduldokumentation.';
+$_['desc_payzen_3ds_min_amount'] = 'Amount below which customer could be exempt from strong authentication. Needs subscription to &laquo;Selective 3DS1&raquo; or &laquo;Frictionless 3DS2&raquo; options. For more information, refer to the module documentation.';
 
 $_['desc_payzen_min_amount'] = 'Mindestbetrag f&uuml;r die Nutzung dieser Zahlungsweise.';
 $_['desc_payzen_max_amount'] = 'H&ouml;chstbetrag f&uuml;r die Nutzung dieser Zahlungsweise.';
