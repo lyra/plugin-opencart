@@ -85,8 +85,7 @@ class ControllerPaymentPayzen extends Controller
             $amount = $this->currency->format($orderInfo['total'], $orderInfo['currency_code'], $orderInfo['currency_value'], false);
             $info['amount'] = $currency->convertAmountToInteger($amount);
 
-            $info['contrib'] = PayzenTools::getDefault('CMS_IDENTIFIER') . '_' . PayzenTools::getDefault('PLUGIN_VERSION') . '/' . VERSION . '/' . PHP_VERSION;
-            $info['order_info'] = 'session_id=' . session_id();
+            $info['contrib'] = PayzenTools::getDefault('CMS_IDENTIFIER') . '_' . PayzenTools::getDefault('PLUGIN_VERSION') . '/' . VERSION . '/' . PayzenApi::shortPhpVersion();
 
             // customer info
             $info['cust_id'] = $orderInfo['customer_id'];
@@ -135,6 +134,9 @@ class ControllerPaymentPayzen extends Controller
             }
 
             $payzenRequest->setFromArray($info);
+
+            // To recover order session.
+            $payzenRequest->addExtInfo('session_id', session_id());
         }
 
         return $payzenRequest;
@@ -191,7 +193,7 @@ class ControllerPaymentPayzen extends Controller
                 $this->writeLog("Clear cart and session vars to process order #$orderId.");
 
                 // Destroy current session and restore the session in which the payment was initiated.
-                $session_id = substr($payzenResponse->get('order_info'), strlen('session_id='));
+                $session_id = $payzenResponse->getExtInfo('session_id');
 
                 $this->session->destroy();
                 if (version_compare(VERSION, '2.2.0.0', '>=')) {
