@@ -29,7 +29,7 @@ $_['tab_payzen_orders'] ='COMMANDES';
 $_['section_payzen_module_info'] = 'INFORMATIONS SUR LE MODULE';
 $_['section_payzen_payment_access'] = 'ACCÈS À LA PLATEFORME';
 $_['section_payzen_payment_page'] = 'PAGE DE PAIEMENT';
-$_['section_payzen_selective_3ds'] = '3DS SÉLECTIF';
+$_['section_payzen_selective_3ds'] = '3DS PERSONNALIS&Eacute;';
 $_['section_payzen_return_to_shop'] = 'RETOUR À LA BOUTIQUE';
 $_['section_payzen_module_setting'] = 'OPTIONS D\'AFFICHAGE';
 $_['section_payzen_amount_restrictions'] = 'RESTRICTIONS SUR LE MONTANT';
@@ -55,7 +55,7 @@ $_['entry_payzen_capture_delay'] = 'Délai avant remise en banque';
 $_['entry_payzen_validation_mode'] = 'Mode de validation';
 $_['entry_payzen_payment_cards'] = 'Types de carte';
 
-$_['entry_payzen_3ds_min_amount'] = 'Désactiver 3DS';
+$_['entry_payzen_3ds_min_amount'] = 'G&eacute;rer le 3DS';
 
 $_['entry_payzen_redirect_enabled'] = 'Redirection automatique';
 $_['entry_payzen_redirect_success_timeout'] = 'Temps avant redirection (succès)';
@@ -92,7 +92,7 @@ $_['desc_payzen_capture_delay'] = 'Le nombre de jours avant la remise en banque 
 $_['desc_payzen_validation_mode'] = 'En mode manuel, vous devrez confirmer les paiements dans le Back Office PayZen.';
 $_['desc_payzen_payment_cards'] = 'Le(s) type(s) de carte pouvant être utilisé(s) pour le paiement. Ne rien sélectionner pour utiliser la configuration de la plateforme.';
 
-$_['desc_payzen_3ds_min_amount'] = 'Montant en dessous duquel 3DS sera désactivé. Nécessite la souscription à l\'option 3DS sélectif. Pour plus d\'informations, reportez-vous à la documentation du module.';
+$_['desc_payzen_3ds_min_amount'] = 'Montant en dessous duquel l&apos;acheteur pourrait &ecirc;tre exempt&eacute; de l&apos;authentification forte. N&eacute;cessite la souscription &agrave; l&apos;option &laquo;Selective 3DS1&raquo; ou l&apos;option &nbsp;&laquo;Frictionless 3DS2&raquo;. Pour plus d&apos;informations, reportez-vous &agrave; la documentation du module.';
 
 $_['desc_payzen_redirect_enabled'] = 'Si activée, l\'acheteur sera redirigé automatiquement vers votre site à la fin du paiement.';
 $_['desc_payzen_redirect_success_timeout'] = 'Temps en secondes (0-300) avant que l\'acheteur ne soit redirigé automatiquement vers votre site lorsque le paiement a réussi.';

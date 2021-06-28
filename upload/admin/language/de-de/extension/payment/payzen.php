@@ -29,7 +29,7 @@ $_['tab_payzen_orders'] ='BESTELLEN';
 $_['section_payzen_module_info'] = 'MODULINFORMATIONEN';
 $_['section_payzen_payment_access'] = 'ZUGANG ZAHLUNGSSCHNITTSTELLE';
 $_['section_payzen_payment_page'] = 'ZAHLUNGSSEITE';
-$_['section_payzen_selective_3ds'] = 'SELEKTIVES 3DS';
+$_['section_payzen_selective_3ds'] = 'CUSTOM 3DS';
 $_['section_payzen_return_to_shop'] = 'RÜCKKEHR ZUM LADEN';
 $_['section_payzen_module_setting'] = 'ANZEIGEOPTIONEN';
 $_['section_payzen_amount_restrictions'] = 'BETRAGSBESCHRÄNKUNGEN';
@@ -55,7 +55,7 @@ $_['entry_payzen_capture_delay'] = 'Einzugsfrist';
 $_['entry_payzen_validation_mode'] = 'Bestätigungsmodus';
 $_['entry_payzen_payment_cards'] = 'Kartentypen';
 
-$_['entry_payzen_3ds_min_amount'] = '3DS deaktivieren';
+$_['entry_payzen_3ds_min_amount'] = 'Manage 3DS';
 
 $_['entry_payzen_redirect_enabled'] = 'Automatische Weiterleitung';
 $_['entry_payzen_redirect_success_timeout'] = 'Zeitbeschränkung Weiterleitung im Erfolgsfall';
@@ -92,7 +92,7 @@ $_['desc_payzen_capture_delay'] = 'Anzahl der Tage bis zum Einzug der Zahlung (E
 $_['desc_payzen_validation_mode'] = 'Bei manueller Eingabe müssen Sie Zahlungen manuell in Ihr PayZen Back Office bestätigen..';
 $_['desc_payzen_payment_cards'] = 'Wählen Sie die zur Zahlung verfügbaren Kartentypen aus. Nichts auswählen, um die Einstellungen der Plattform zu verwenden.';
 
-$_['desc_payzen_3ds_min_amount'] = 'Betrag, unter dem 3DS deaktiviert wird. Muss für die Option Selektives 3DS freigeschaltet sein. Weitere Informationen finden Sie in der Moduldokumentation.';
+$_['desc_payzen_3ds_min_amount'] = 'Amount below which customer could be exempt from strong authentication. Needs subscription to &laquo;Selective 3DS1&raquo; or &laquo;Frictionless 3DS2&raquo; options. For more information, refer to the module documentation.';
 
 $_['desc_payzen_redirect_enabled'] = 'Ist diese Einstellung aktiviert, wird der Kunde am Ende des Bezahlvorgangs automatisch auf Ihre Seite weitergeleitet.';
 $_['desc_payzen_redirect_success_timeout'] = 'Zeitspanne in Sekunden (0-300) bis zur automatischen Weiterleitung des Kunden auf Ihre Seite nach erfolgter Zahlung.';

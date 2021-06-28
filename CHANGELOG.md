@@ -1,3 +1,9 @@
+3.1.1, 2021-06-28:
+- Do not use vads\_order\_info, use vads\_ext\_info\_* instead.
+- Send the relevant part of the current PHP version in vads\_contrib field.
+- Improve support e-mail display.
+- Update 3DS management option description.
+
 3.1.0, 2020-12-21:
 - Bug fix: Error 500 due to obsolete function (get_magic_quotes_gpc) in PHP 7.4.
 - Enable signature algorithm selection (SHA-1 or HMAC-SHA-256).
