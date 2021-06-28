@@ -80,7 +80,9 @@ class ControllerExtensionPaymentPayzen extends Controller
         $data['text_payzen_automatic'] = $this->language->get('text_payzen_automatic');
         $data['text_payzen_manual'] = $this->language->get('text_payzen_manual');
 
-        $data['text_payzen_support_email'] = PayzenTools::getDefault('SUPPORT_EMAIL');
+        require_once(DIR_SYSTEM . 'library/payzen/api.php');
+
+        $data['text_payzen_support_email'] = PayzenApi::formatSupportEmails(PayzenTools::getDefault('SUPPORT_EMAIL'));
         $data['text_payzen_plugin_version'] = PayzenTools::getDefault('PLUGIN_VERSION');
         $data['text_payzen_gateway_version'] = PayzenTools::getDefault('GATEWAY_VERSION');
 
@@ -99,8 +101,6 @@ class ControllerExtensionPaymentPayzen extends Controller
         $data['entry_payzen_gateway_version'] = $this->language->get('entry_payzen_gateway_version');
 
         $data['entry_payzen_url_check'] = $this->language->get('entry_payzen_url_check');
-
-        require_once(DIR_SYSTEM . 'library/payzen/api.php');
 
         // Use supported API languages.
         $data[$this->name . '_language_options'] = array();

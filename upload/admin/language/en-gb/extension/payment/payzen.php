@@ -29,7 +29,7 @@ $_['tab_payzen_orders'] ='ORDERS';
 $_['section_payzen_module_info'] = 'MODULE INFORMATION';
 $_['section_payzen_payment_access'] = 'PAYMENT GATEWAY ACCESS';
 $_['section_payzen_payment_page'] = 'PAYMENT PAGE';
-$_['section_payzen_selective_3ds'] = 'SELECTIVE 3DS';
+$_['section_payzen_selective_3ds'] = 'CUSTOM 3DS';
 $_['section_payzen_return_to_shop'] = 'RETURN TO SHOP';
 $_['section_payzen_module_setting'] = 'DISPLAY OPTIONS';
 $_['section_payzen_amount_restrictions'] = 'AMOUNT RESTRICTIONS';
@@ -55,7 +55,7 @@ $_['entry_payzen_capture_delay'] = 'Capture delay';
 $_['entry_payzen_validation_mode'] = 'Validation mode';
 $_['entry_payzen_payment_cards'] = 'Card types';
 
-$_['entry_payzen_3ds_min_amount'] = 'Disable 3DS';
+$_['entry_payzen_3ds_min_amount'] = 'Manage 3DS';
 
 $_['entry_payzen_redirect_enabled'] = 'Automatic redirection';
 $_['entry_payzen_redirect_success_timeout'] = 'Redirection timeout on success';
@@ -92,7 +92,7 @@ $_['desc_payzen_capture_delay'] = 'The number of days before the bank capture (a
 $_['desc_payzen_validation_mode'] = 'If manual is selected, you will have to confirm payments manually in your PayZen Back Office.';
 $_['desc_payzen_payment_cards'] = 'The card type(s) that can be used for the payment. Select none to use gateway configuration.';
 
-$_['desc_payzen_3ds_min_amount'] = 'Amount below which 3DS will be disabled. Needs subscription to selective 3DS option. For more information, refer to the module documentation.';
+$_['desc_payzen_3ds_min_amount'] = 'Amount below which customer could be exempt from strong authentication. Needs subscription to &laquo;Selective 3DS1&raquo; or &laquo;Frictionless 3DS2&raquo; options. For more information, refer to the module documentation.';
 
 $_['desc_payzen_redirect_enabled'] = 'If enabled, the buyer is automatically redirected to your site at the end of the payment.';
 $_['desc_payzen_redirect_success_timeout'] = 'Time in seconds (0-300) before the buyer is automatically redirected to your website after a successful payment.';
