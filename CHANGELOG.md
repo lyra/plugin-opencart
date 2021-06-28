@@ -1,3 +1,9 @@
+4.1.3, 2021-06-28:
+- Do not use vads\_order\_info, use vads\_ext\_info\_* instead.
+- Send the relevant part of the current PHP version in vads\_contrib field.
+- Improve support e-mail display.
+- Update 3DS management option description.
+
 4.1.2, 2021-03-29:
 - Bug fix: Adapt plugin structure for OpenCart cloud.
 
