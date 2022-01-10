@@ -86,7 +86,7 @@ class ControllerExtensionPaymentPayzen extends Controller
             $amount = $this->currency->format($orderInfo['total'], $orderInfo['currency_code'], $orderInfo['currency_value'], false);
             $info['amount'] = $currency->convertAmountToInteger($amount);
 
-            $info['contrib'] = 'OpenCart_3.x_4.1.3/' . VERSION . '/' . PayzenApi::shortPhpVersion();
+            $info['contrib'] = 'OpenCart_3.x_4.1.4/' . VERSION . '/' . PayzenApi::shortPhpVersion();
 
             // Customer info.
             $info['cust_id'] = $orderInfo['customer_id'];
@@ -194,7 +194,7 @@ class ControllerExtensionPaymentPayzen extends Controller
                 // Destroy current session and restore the session in which the payment was initiated.
                 $sessionId = $payzenResponse->getExtInfo('session_id');
 
-                $this->session->__destroy();
+                method_exists($this->session, '__destroy') ? $this->session->__destroy() : $this->session->destroy();
                 $this->session->start($sessionId);
                 $this->registry->set('session', $this->session);
 
