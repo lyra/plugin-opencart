@@ -1,4 +1,4 @@
-Copyright © 2017-2021 Lyra Network.
+Copyright © 2017-2022 Lyra Network.
 
 PayZen for OpenCart is free software; you can redistribute it and/or modify 
 it under the terms of the GNU General Public License as published by

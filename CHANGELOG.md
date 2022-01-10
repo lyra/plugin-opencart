@@ -1,3 +1,6 @@
+4.1.4, 2022-01-10:
+- Bug fix: Caused by function rename in OpenCart latest versions.
+
 4.1.3, 2021-06-28:
 - Do not use vads\_order\_info, use vads\_ext\_info\_* instead.
 - Send the relevant part of the current PHP version in vads\_contrib field.
