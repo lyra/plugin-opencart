@@ -103,6 +103,9 @@ class ControllerExtensionPaymentPayzen extends Controller
         $data['entry_payment_payzen_contrib_version'] = $this->language->get('entry_payment_payzen_contrib_version');
         $data['entry_payment_payzen_gateway_version'] = $this->language->get('entry_payment_payzen_gateway_version');
 
+        $data['text_payment_payzen_site_id'] = PayzenTools::getDefault('SITE_ID');
+        $data['text_payment_payzen_key_test'] = PayzenTools::getDefault('KEY_TEST');
+        $data['text_payment_payzen_key_prod'] = PayzenTools::getDefault('KEY_PROD');
         $data['entry_payment_payzen_url_check'] = $this->language->get('entry_payment_payzen_url_check');
         $data['desc_payment_payzen_url_check'] = $this->language->get('desc_payment_payzen_url_check');
 
@@ -201,9 +204,6 @@ class ControllerExtensionPaymentPayzen extends Controller
         $data[$this->prefix . $this->name . '_sort_order'] = '1';
         $data[$this->prefix . $this->name . '_geo_zone'] = '0';
         $data[$this->prefix . $this->name . '_enable_logs'] = '1';
-        $data[$this->prefix . $this->name . '_site_id'] =  PayzenTools::getDefault('SITE_ID');
-        $data[$this->prefix . $this->name . '_key_test'] = PayzenTools::getDefault('KEY_TEST');
-        $data[$this->prefix . $this->name . '_key_prod'] = PayzenTools::getDefault('KEY_PROD');
         $data[$this->prefix . $this->name . '_ctx_mode'] = PayzenTools::getDefault('CTX_MODE');
         $data[$this->prefix . $this->name . '_sign_algo'] = PayzenTools::getDefault('SIGN_ALGO');
         $data[$this->prefix . $this->name . '_platform_url'] = PayzenTools::getDefault('GATEWAY_URL');

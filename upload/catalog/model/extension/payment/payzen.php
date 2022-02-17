@@ -57,7 +57,7 @@ class ModelExtensionPaymentPayzen extends Model
         if ($this->config->get('credit_status')) {
             $credit = $this->customer->getBalance();
 
-            if ((float)$credit) {
+            if ((float) $credit) {
                 if ($credit >= $total) {
                     return false;
                 }
@@ -102,7 +102,7 @@ class ModelExtensionPaymentPayzen extends Model
     {
         $this->db->query(
             'UPDATE `' . DB_PREFIX . "order` SET `payment_method` = '" . $this->db->escape($this->getTitle())
-            . "' WHERE order_id = '" . (int)$order_id . "'"
+            . "' WHERE order_id = '" . (int) $order_id . "'"
         );
     }
 }
