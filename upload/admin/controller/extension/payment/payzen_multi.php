@@ -42,7 +42,7 @@ class ControllerExtensionPaymentPayzenMulti extends ControllerExtensionPaymentPa
 
         if (isset($data[$this->prefix . 'payzen_multi_first'])
                 && ! empty($data[$this->prefix . 'payzen_multi_first'])
-                && (! is_numeric($data[$this->prefix . 'payzen_multi_first']) || (float)$data[$this->prefix . 'payzen_multi_first'] >= 100 || (float)$data[$this->prefix . 'payzen_multi_first'] < 0)) {
+                && (! is_numeric($data[$this->prefix . 'payzen_multi_first']) || (float) $data[$this->prefix . 'payzen_multi_first'] >= 100 || (float) $data[$this->prefix . 'payzen_multi_first'] < 0)) {
             $this->error = sprintf($this->language->get('error_payzen_multi_validation'), $this->language->get('entry_payment_payzen_multi_first'));
         } elseif (! isset($data[$this->prefix . 'payzen_multi_count'])
                 || ! preg_match('#^[1-9]\d*$#', $data[$this->prefix . 'payzen_multi_count'])) {

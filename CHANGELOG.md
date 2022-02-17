@@ -1,3 +1,6 @@
+4.1.5, 2022-02-17:
+- Minor code fixes.
+
 4.1.4, 2022-01-10:
 - Bug fix: Caused by function rename in OpenCart latest versions.
 
