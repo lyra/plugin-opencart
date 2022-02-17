@@ -10,7 +10,6 @@
 
 class ControllerExtensionPaymentPayzen extends Controller
 {
-
     protected $name;
     protected $prefix;
     protected $logger;
@@ -86,7 +85,7 @@ class ControllerExtensionPaymentPayzen extends Controller
             $amount = $this->currency->format($orderInfo['total'], $orderInfo['currency_code'], $orderInfo['currency_value'], false);
             $info['amount'] = $currency->convertAmountToInteger($amount);
 
-            $info['contrib'] = 'OpenCart_3.x_4.1.4/' . VERSION . '/' . PayzenApi::shortPhpVersion();
+            $info['contrib'] = 'OpenCart_3.x_4.1.5/' . VERSION . '/' . PayzenApi::shortPhpVersion();
 
             // Customer info.
             $info['cust_id'] = $orderInfo['customer_id'];
@@ -243,7 +242,6 @@ class ControllerExtensionPaymentPayzen extends Controller
             }
         } else {
             // Order already processed.
-
             if ($this->isOrderSuccess($orderInfo) && $payzenResponse->isAcceptedPayment()) {
                 $this->writeLog("Payment notification confirmed. Payment accepted for order #$orderId.");
                 $this->writeLog('End server response processing.');
