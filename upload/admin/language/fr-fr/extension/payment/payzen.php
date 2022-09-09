@@ -95,6 +95,7 @@ $_['desc_payment_payzen_available_languages'] = 'Sélectionner les langues à pr
 $_['desc_payment_payzen_capture_delay'] = 'Le nombre de jours avant la remise en banque (paramétrable sur votre Back Office PayZen).';
 $_['desc_payment_payzen_validation_mode'] = 'En mode manuel, vous devrez confirmer les paiements dans le Back Office PayZen.';
 $_['desc_payment_payzen_payment_cards'] = 'Le(s) type(s) de carte pouvant être utilisé(s) pour le paiement. Ne rien sélectionner pour utiliser la configuration de la plateforme.';
+
 $_['desc_payment_payzen_3ds_min_amount'] = 'Montant en dessous duquel l&apos;acheteur pourrait &ecirc;tre exempt&eacute; de l&apos;authentification forte. N&eacute;cessite la souscription &agrave; l&apos;option &laquo;Selective 3DS1&raquo; ou l&apos;option &nbsp;&laquo;Frictionless 3DS2&raquo;. Pour plus d&apos;informations, reportez-vous &agrave; la documentation du module.';
 
 $_['desc_payment_payzen_redirect_enabled'] = 'Si activée, l\'acheteur sera redirigé automatiquement vers votre site à la fin du paiement.';

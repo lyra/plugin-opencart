@@ -27,7 +27,7 @@ $_['tab_payment_payzen_multi_specific'] ='PAIEMENT EN PLUSIEURS FOIS';
 $_['section_payment_payzen_multi_options'] = 'OPTIONS DE PAIEMENT';
 
 // Gateway multi payment options.
-$_['entry_payment_payzen_multi_first'] = '1er Paiement';
+$_['entry_payment_payzen_multi_first'] = '1ére échéance';
 $_['entry_payment_payzen_multi_count'] = 'Nombre';
 $_['entry_payment_payzen_multi_period'] = 'Période';
 

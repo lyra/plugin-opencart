@@ -27,11 +27,11 @@ $_['tab_payment_payzen_multi_specific'] ='RATENZAHLUNG';
 $_['section_payment_payzen_multi_options'] = 'RATENZAHLUNG OPTIONEN';
 
 // Gateway multi payment options.
-$_['entry_payment_payzen_multi_first'] = '1. Zahlung';
+$_['entry_payment_payzen_multi_first'] = '1. Rate';
 $_['entry_payment_payzen_multi_count'] = 'Anzahl';
 $_['entry_payment_payzen_multi_period'] = 'Zeitraum';
 
-$_['desc_payment_payzen_multi_first'] = 'Betrag der ersten Rate als Prozentsatz des Gesamtbetrags. Falls dies nicht angegeben ist, haben alle Raten den gleichen Betrag.';
+$_['desc_payment_payzen_multi_first'] = 'Betrag der ersten Rate insgesamtes Prozent. Falls dies nicht angegeben ist, haben alle Raten den gleichen Betrag.';
 $_['desc_payment_payzen_multi_count'] = 'Gesamtanzahl der Raten.';
 $_['desc_payment_payzen_multi_period'] = 'Zeitraum zwischen zwei Raten (in Tagen).';
 

@@ -27,13 +27,13 @@ $_['tab_payment_payzen_multi_specific'] ='PAGO EN CUOTAS';
 $_['section_payment_payzen_multi_options'] = 'OPCIONES DE PAGO';
 
 // Gateway multi payment options.
-$_['entry_payment_payzen_multi_first'] = 'Primer pago';
+$_['entry_payment_payzen_multi_first'] = 'Primer vencimiento';
 $_['entry_payment_payzen_multi_count'] = 'Conteo';
 $_['entry_payment_payzen_multi_period'] = 'Periodo';
 
-$_['desc_payment_payzen_multi_first'] = 'Monto del primer pago, en porcentaje del monto total. Si está vacío, todos los pagos tendrán el mismo monto.';
-$_['desc_payment_payzen_multi_count'] = 'Número total de pagos.';
-$_['desc_payment_payzen_multi_period'] = 'Plazo (en días) entre pagos.';
+$_['desc_payment_payzen_multi_first'] = 'Monto del primer vencimiento, en porcentaje del monto total. Si está vacío, todos los vencimientos tendrán el mismo monto.';
+$_['desc_payment_payzen_multi_count'] = 'Número total de vencimientos.';
+$_['desc_payment_payzen_multi_period'] = 'Plazo (en días) entre vencimientos.';
 
 // Gateway multi payment restriction warning.
 $_['text_payment_payzen_multi_restriction_warn'] = 'ATENCIÓN: La activación de la función de pago en cuotas está sujeta al acuerdo previo de Societé Générale.<br />Si habilita esta función cuando no tiene la opción asociada, ocurrirá un error 10000 – INSTALLMENTS_NOT_ALLOWED o 07 - PAYMENT_CONFIG y el comprador no podrá pagar.';
