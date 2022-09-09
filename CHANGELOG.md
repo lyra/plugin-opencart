@@ -1,3 +1,7 @@
+4.1.6, 2022-09-09:
+- Added Portuguese translation.
+- Update list of supported payment means.
+
 4.1.5, 2022-02-17:
 - Minor code fixes.
 
