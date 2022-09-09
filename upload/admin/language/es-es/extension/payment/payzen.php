@@ -67,7 +67,7 @@ $_['entry_payment_payzen_return_mode'] = 'Modo de retorno';
 
 $_['entry_payment_payzen_order_status_failed'] = 'Estado de los pedidos cuando el pago es rechaza.';
 $_['entry_payment_payzen_order_status_success'] = 'Estado de los pedidos cuando el pago es exitoso.';
-$_['entry_payment_payzen_order_status_canceled'] = 'Estado del los pedidos cuando el pago es cancelado.';
+$_['entry_payment_payzen_order_status_canceled'] = 'Estado de los pedidos cuando el pago es cancelado.';
 
 $_['entry_payment_payzen_notify_failed'] = 'Notificar el comprador en pago rechazad';
 $_['entry_payment_payzen_notify_canceled'] = 'Notificar el comprador en pago cancelado';

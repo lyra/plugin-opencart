@@ -81,7 +81,6 @@ $_['entry_payment_payzen_enable_logs'] = 'Logdaten';
 $_['entry_payment_payzen_min_amount'] = 'Mindestbetrag';
 $_['entry_payment_payzen_max_amount'] = 'Höchstbetrag';
 
-
 $_['desc_payment_payzen_site_id'] = 'Die Kennung von PayZen bereitgestellt.';
 $_['desc_payment_payzen_key_test'] = 'Schlüssel, das von PayZen zu Testzwecken bereitgestellt wird (im PayZen Back Office verfügbar).';
 $_['desc_payment_payzen_key_prod'] = 'Von PayZen bereitgestelltes Schlüssel (im PayZen Back Office verfügbar, nachdem der Produktionsmodus aktiviert wurde).';
@@ -133,7 +132,7 @@ $_['text_payment_payzen_russian'] = 'Russisch';
 $_['text_payment_payzen_turkish'] = 'Türkisch';
 
 $_['text_payment_payzen_test'] = 'TEST';
-$_['text_payment_payzen_production'] = 'PRODUKTION';
+$_['text_payment_payzen_production'] = 'PRODUCTION';
 
 $_['text_payment_payzen_default'] = 'PayZen Back Office Konfiguration';
 $_['text_payment_payzen_automatic'] = 'Automatisch';

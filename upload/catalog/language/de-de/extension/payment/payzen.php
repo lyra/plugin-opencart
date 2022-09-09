@@ -8,7 +8,6 @@
  * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
-// Text.
 $_['text_payment_payzen_title'] = 'Zahlung mit EC-/Kreditkarte';
 $_['text_payment_payzen_multi_title'] = 'Ratenzahlung mit EC-/Kreditkarte';
 
