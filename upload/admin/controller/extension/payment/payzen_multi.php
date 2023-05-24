@@ -12,7 +12,6 @@ require_once 'payzen.php';
 
 class ControllerExtensionPaymentPayzenMulti extends ControllerExtensionPaymentPayzen
 {
-
     public function __construct($params)
     {
         parent::__construct($params);

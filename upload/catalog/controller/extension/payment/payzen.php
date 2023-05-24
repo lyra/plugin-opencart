@@ -8,6 +8,10 @@
  * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
+use \payzen\Form\Api as PayzenApi;
+use \payzen\Form\Request as PayzenRequest;
+use \payzen\Form\Response as PayzenResponse;
+
 class ControllerExtensionPaymentPayzen extends Controller
 {
     protected $name;
@@ -49,7 +53,6 @@ class ControllerExtensionPaymentPayzen extends Controller
 
     protected function getPayzenRequest()
     {
-        require_once(DIR_SYSTEM . 'library/payzen/request.php');
         $payzenRequest = new PayzenRequest();
 
         $this->load->model('checkout/order');
@@ -85,7 +88,7 @@ class ControllerExtensionPaymentPayzen extends Controller
             $amount = $this->currency->format($orderInfo['total'], $orderInfo['currency_code'], $orderInfo['currency_value'], false);
             $info['amount'] = $currency->convertAmountToInteger($amount);
 
-            $info['contrib'] = 'OpenCart_3.x_4.1.6/' . VERSION . '/' . PayzenApi::shortPhpVersion();
+            $info['contrib'] = 'OpenCart_3.x_4.1.7/' . VERSION . '/' . PayzenApi::shortPhpVersion();
 
             // Customer info.
             $info['cust_id'] = $orderInfo['customer_id'];
@@ -151,7 +154,6 @@ class ControllerExtensionPaymentPayzen extends Controller
 
         $this->writeLog('Begin server response processing.');
 
-        require_once(DIR_SYSTEM . 'library/payzen/response.php');
         $payzenResponse = new PayzenResponse(
             $data,
             $this->config->get($this->prefix . $this->name . '_ctx_mode'),
@@ -269,7 +271,6 @@ class ControllerExtensionPaymentPayzen extends Controller
 
         $this->writeLog('Begin return user response processing.');
 
-        require_once(DIR_SYSTEM . 'library/payzen/response.php');
         $payzenResponse = new PayzenResponse(
             $data,
             $this->config->get($this->prefix . $this->name . '_ctx_mode'),

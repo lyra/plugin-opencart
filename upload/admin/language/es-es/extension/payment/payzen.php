@@ -41,6 +41,7 @@ $_['entry_payment_payzen_developed_by']  = 'Desarrollado por: ';
 $_['entry_payment_payzen_contact_email'] = 'Contáctenos: ';
 $_['entry_payment_payzen_contrib_version'] = 'Versión del módulo: ';
 $_['entry_payment_payzen_gateway_version'] = 'Versión del portal: ';
+$_['entry_payment_payzen_doc'] = 'Haga clic para ver la documentación de la configuración del módulo: ';
 
 $_['entry_payment_payzen_site_id'] = 'Identificador de tienda';
 $_['entry_payment_payzen_key_test'] = 'Clave en modo test';
