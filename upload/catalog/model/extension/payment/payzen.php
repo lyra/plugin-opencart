@@ -8,9 +8,10 @@
  * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
+use \payzen\Form\Api as PayzenApi;
+
 class ModelExtensionPaymentPayzen extends Model
 {
-
     protected $name;
     protected $prefix;
 
@@ -63,9 +64,6 @@ class ModelExtensionPaymentPayzen extends Model
                 }
             }
         }
-
-        // Load PayzenApi class.
-        require_once(DIR_SYSTEM.'library/payzen/api.php');
 
         // Check the current currency support.
         $currencyObj = PayzenApi::findCurrencyByAlphaCode($this->session->data['currency']);

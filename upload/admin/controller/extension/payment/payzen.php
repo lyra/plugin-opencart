@@ -8,6 +8,8 @@
  * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
+use \payzen\Form\Api as PayzenApi;
+
 class ControllerExtensionPaymentPayzen extends Controller
 {
     protected $error = '';
@@ -82,11 +84,10 @@ class ControllerExtensionPaymentPayzen extends Controller
         $data['text_payment_payzen_automatic'] = $this->language->get('text_payment_payzen_automatic');
         $data['text_payment_payzen_manual'] = $this->language->get('text_payment_payzen_manual');
 
-        require_once(DIR_SYSTEM . 'library/payzen/api.php');
-
         $data['text_payment_payzen_support_email'] = PayzenApi::formatSupportEmails(PayzenTools::getDefault('SUPPORT_EMAIL'));
         $data['text_payment_payzen_contrib_version'] = PayzenTools::getDefault('PLUGIN_VERSION');
         $data['text_payment_payzen_gateway_version'] = PayzenTools::getDefault('GATEWAY_VERSION');
+        $data['text_payment_payzen_doc'] = PayzenTools::getDocUrls();
 
         $data['section_payment_payzen_module_info'] = $this->language->get('section_payment_payzen_module_info');
         $data['section_payment_payzen_payment_access'] = $this->language->get('section_payment_payzen_payment_access');
@@ -102,6 +103,7 @@ class ControllerExtensionPaymentPayzen extends Controller
         $data['entry_payment_payzen_contact_email'] = $this->language->get('entry_payment_payzen_contact_email');
         $data['entry_payment_payzen_contrib_version'] = $this->language->get('entry_payment_payzen_contrib_version');
         $data['entry_payment_payzen_gateway_version'] = $this->language->get('entry_payment_payzen_gateway_version');
+        $data['entry_payment_payzen_doc'] = $this->language->get('entry_payment_payzen_doc');
 
         $data['text_payment_payzen_site_id'] = PayzenTools::getDefault('SITE_ID');
         $data['text_payment_payzen_key_test'] = PayzenTools::getDefault('KEY_TEST');
