@@ -8,6 +8,7 @@
  * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
+use \payzen\Form\Api as PayzenApi;
 require_once('payzen.php');
 
 class ControllerExtensionPaymentPayzenMulti extends ControllerExtensionPaymentPayzen

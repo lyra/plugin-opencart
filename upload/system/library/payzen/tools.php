@@ -8,6 +8,8 @@
  * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  */
 
+use \payzen\Form\Api as PayzenApi;
+
 class PayzenTools
 {
     private static $GATEWAY_NAME = 'PayZen';
@@ -22,7 +24,7 @@ class PayzenTools
 
     private static $CMS_IDENTIFIER = 'OpenCart_3.x';
     private static $SUPPORT_EMAIL = 'support@payzen.eu';
-    private static $PLUGIN_VERSION = '4.1.6';
+    private static $PLUGIN_VERSION = '4.1.7';
     private static $GATEWAY_VERSION = 'V2';
 
     public static $plugin_features = array(
@@ -45,5 +47,24 @@ class PayzenTools
         }
 
         return self::$$name;
+    }
+
+    public static function getDocUrls() 
+    {
+        // Get documentation links.
+        $languages = array(
+            'fr' => 'Français',
+            'en' => 'English',
+            'es' => 'Español',
+            'pt' => 'Português'
+            // Complete when other languages are managed.
+        );
+
+        $docs = '';
+        foreach (PayzenApi::getOnlineDocUri() as $lang => $docUri) {
+            $docs .= '<a style="margin-left: 10px; text-decoration: none; text-transform: uppercase;" href="' . $docUri . 'opencart3/sitemap.html" target="_blank">' . $languages[$lang] . '</a>';
+        }
+
+        return $docs;
     }
 }

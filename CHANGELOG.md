@@ -1,3 +1,9 @@
+4.1.7, 2023-05-24:
+- [technical] Use PHP namespaces.
+- Added module documentation management field.
+- Update list of supported payment means.
+- Update list of supported currencies.
+
 4.1.6, 2022-09-09:
 - Added Portuguese translation.
 - Update list of supported payment means.
