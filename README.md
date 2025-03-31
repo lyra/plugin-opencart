@@ -4,8 +4,11 @@ PayZen for OpenCart is an open source plugin that links e-commerce websites base
 
 # Installation
 
-- Unzip downloaded archive and copy the `upload` directory contents to your website root folder.
-- Browse to `Extensions > Payments` in OpenCart Back Office.
+- Unzip the downloaded zip file to get an ocmode zip file
+- Browse to `Extensions > Installer` in OpenCart Back office.
+- Click on the `Upload` button to upload the ocmode zip file.
+- Click on the `Install (+)` button in the `Action` column of the PayZen extension.
+- Browse to `Extensions > Extensions > Payments` in OpenCart Back office.
 - Click on the `Install (+)` button in the `Action` column of the desired PayZen payment method.
 
 # Upgrade
@@ -14,9 +17,11 @@ To update the payment plugin, you must first uninstall and delete the previous v
 
 To uninstall the payment module: 
 
-- Browse to `Extensions > Payments` in OpenCart Back office.
-- Click on the `Uninstall (-)` button in the `Action` column of the desired PayZen payment method.
-- Manually delete files `payzen.php` and `payzen_multi.php` in `/admin/controller/extension/payment/` folder via FTP.
+- Browse to `Extensions > Extensions > Payments` in OpenCart Back office.
+- Click on the `Uninstall (-)` button in the `Action` column of the all PayZen payment methods.
+- Browse to `Extensions > Installer` in OpenCart Back office.
+- Click on the `Uninstall (-)` button in the `Action` column of the PayZen extension.
+- Click on the `Delete` button in the `Action` column of the PayZen extension.
 - Please consult previous chapter `# Installation` to perform the module installation.
 
 # Configuration

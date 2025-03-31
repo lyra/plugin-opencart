@@ -1,0 +1,438 @@
+{#
+ * Copyright © Lyra Network.
+ * This file is part of PayZen plugin for OpenCart See COPYING.md for license details.
+ *
+ * @author     Lyra Network <https://www.lyra.com>
+ * @copyright  Lyra Network
+ * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
+ #}
+
+{{ header }}{{ column_left }}
+
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="float-end">
+        <button type="submit" form="form-payment_payzen_multi" data-bs-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa-solid fa-save"></i></button>
+        <a href="{{ cancel }}" data-bs-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-light"><i class="fa-solid fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+          <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ol>
+
+{% if not payzen_plugin_features.multi %}
+    <div class="alert alert-warning" style="margin: 20px;">{{ text_payment_payzen_multi_not_available }}</div>
+  </div>
+{% else %}
+  {% if payzen_plugin_features.restrictmulti %}
+    <div class="alert alert-warning" style="margin: 20px;">{{ text_payment_payzen_multi_restriction_warn }}</div>
+  {% endif %}
+  </div>
+
+  <div class="container-fluid">
+    {% if error_warning %}
+      <div class="alert alert-danger">{{ error_warning }}</div>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {% endif %}
+
+  <div class="container-fluid">
+    {% if error_warning %}
+      <div class="alert alert-danger">{{ error_warning }}</div>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {% endif %}
+
+    <div class="container-fluid">
+     <div class="card">
+       <div class="card-body">
+         <legend><font style="font-weight: bold;">{{ section_payment_payzen_module_info }}</font></legend>
+         <div class="row mb-2">
+           <label class="col-sm-2 control-label" style="text-align: left;">{{ entry_payment_payzen_developed_by }}</label>
+           <div class="col-sm-10">
+             <label class="control-label" style="text-align: left;"><b><a href="https://www.lyra.com" target="_blank">Lyra Network</a></b></label>
+           </div>
+         </div>
+        <div class="row mb-2">
+          <label class="col-sm-2 control-label" style="text-align: left;">{{ entry_payment_payzen_contact_email }}</label>
+          <div class="col-sm-10">
+            <label class="control-label" style="text-align: left;">{{ text_payment_payzen_support_email }}</label>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-sm-2 control-label" style="text-align: left;">{{ entry_payment_payzen_contrib_version }}</label>
+          <div class="col-sm-10">
+            <label class="col-sm-2 control-label" style="text-align: left;">{{ entry_payment_payzen_contrib_version }}</label>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-sm-2 control-label" style="text-align: left;">{{ entry_payment_payzen_gateway_version }}</label>
+          <div class="col-sm-10">
+            <label class="control-label" style="text-align: left;"><b>{{ text_payment_payzen_gateway_version }}</b></label>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-sm-2 control-label" style="text-align: left;">{{ entry_payment_payzen_doc }}</label>
+          <div class="col-sm-10">
+            <label class="control-label" style="text-align: left;"><b>{{ text_payment_payzen_doc }}</b></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-pencil"></i> {{ text_edit }}</div>
+      <div class="card-body">
+       <form action="{{ action }}" method="POST" enctype="multipart/form-data" id="form-payment_payzen_multi" class="form-horizontal">
+          <ul class="nav nav-tabs">
+            <li class="nav-item"><a href="#tab-general" data-bs-toggle="tab" class="nav-link active">{{ tab_payment_payzen_general }}</a></li>
+            <li class="nav-item"><a href="#tab-specific" data-bs-toggle="tab" class="nav-link">{{ tab_payment_payzen_multi_specific }}</a></li>
+            <li class="nav-item"><a href="#tab-orders" data-bs-toggle="tab" class="nav-link">{{ tab_payment_payzen_orders }}</a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab-general">
+              <fieldset>
+                <legend><font style="font-weight: bold;">{{ section_payment_payzen_payment_access }}</font></legend>
+
+                 <div class="row mb-2 required">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_site_id"><span data-toggle="tooltip" title="{{ desc_payment_payzen_site_id }}">{{ entry_payment_payzen_site_id }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_site_id" name="payment_payzen_multi_site_id" placeholder="{{ text_payment_payzen_site_id }}" value="{{ payment_payzen_multi_site_id }}" autocomplete="off" />
+                  </div>
+                </div>
+                {% if not payzen_plugin_features.qualif %}
+                  <div class="row mb-2 required">
+                    <label class="col-sm-2 col-form-label" for="payment_payzen_multi_key_test"><span data-toggle="tooltip" title="{{ desc_payment_payzen_key_test }}">{{ entry_payment_payzen_key_test }}</span></label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="payment_payzen_multi_key_test" name="payment_payzen_multi_key_test" placeholder="{{ text_payment_payzen_key_test }}" value="{{ payment_payzen_multi_key_test }}" autocomplete="off" />
+                    </div>
+                  </div>
+                {% endif %}
+                <div class="row mb-2 required">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_key_prod"><span data-toggle="tooltip" title="{{ desc_payment_payzen_key_prod }}">{{ entry_payment_payzen_key_prod }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_key_prod" name="payment_payzen_multi_key_prod" placeholder="{{ text_payment_payzen_key_prod }}" value="{{ payment_payzen_multi_key_prod }}" autocomplete="off" />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_ctx_mode"><span data-toggle="tooltip" title="{{ desc_payment_payzen_ctx_mode }}">{{ entry_payment_payzen_ctx_mode }}</span></label>
+                  <div class="col-sm-10">
+                    <select class="form-select" id="payment_payzen_multi_ctx_mode" name="payment_payzen_multi_ctx_mode"{% if payzen_plugin_features.qualif %} disabled="disabled"{% endif %}>
+                      <option {% if payment_payzen_multi_ctx_mode == 'TEST' %} selected="selected" {% endif %} value="TEST">{{ text_payment_payzen_test }}</option>
+                      <option {% if payment_payzen_multi_ctx_mode == 'PRODUCTION' %} selected="selected" {% endif %} value="PRODUCTION">{{ text_payment_payzen_production }}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_sign_algo"><span data-toggle="tooltip" title="{{ desc_payment_payzen_sign_algo }}">{{ entry_payment_payzen_sign_algo }}</span></label>
+                  <div class="col-sm-10">
+                    <select class="form-select" id="payment_payzen_multi_sign_algo" name="payment_payzen_multi_sign_algo">
+                      <option {% if payment_payzen_multi_sign_algo == 'SHA-1' %} selected="selected" {% endif %} value="SHA-1">SHA-1</option>
+                      <option {% if payment_payzen_multi_sign_algo == 'SHA-256' %} selected="selected" {% endif %} value="SHA-256">HMAC-SHA-256</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label">{{ entry_payment_payzen_url_check }}</label>
+                  <div class="col-sm-10">
+                    <label class="control-label" style="display: inline;">{{ payment_payzen_notification_url }}<br />
+                      <label style="color: red;">{{ desc_payment_payzen_url_check }}</label>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend><font style="font-weight: bold;">{{ section_payment_payzen_payment_page }}</font></legend>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_language"><span data-toggle="tooltip" title="{{ desc_payment_payzen_language }}">{{ entry_payment_payzen_language }}</span></label>
+                  <div class="col-sm-10">
+                    <select class="form-select" id="payment_payzen_multi_language" name="payment_payzen_multi_language">
+                    {% for code, label in payment_payzen_multi_language_options %}
+                      {% if payment_payzen_multi_language == code %}
+                        <option selected="selected" value="{{ code }}">{{ label }}</option>
+                      {% else %}
+                        <option value="{{ code }}">{{ label }}</option>
+                      {% endif %}
+                    {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_available_languages"><span data-toggle="tooltip" title="{{ desc_payment_payzen_available_languages }}">{{ entry_payment_payzen_available_languages }}</span></label>
+                  <div class="col-sm-10">
+                    <select class="form-select" id="payment_payzen_multi_available_languages" name="payment_payzen_multi_available_languages[]" multiple="multiple" size="9" style="height: auto;">
+                    {% if payment_payzen_multi_available_languages is empty %}
+                      {% set payment_payzen_multi_available_languages = [] %}
+                    {% else %}
+                      {% set payment_payzen_multi_available_languages = payment_payzen_multi_available_languages|split(';') %}
+                    {% endif %}
+
+                    {% for code, label in payment_payzen_multi_language_options %}
+                      {% if code in payment_payzen_multi_available_languages %}
+                        <option selected="selected" value="{{ code }}">{{ label }}</option>
+                      {% else %}
+                        <option value="{{ code }}">{{ label }}</option>
+                      {% endif %}
+                    {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_capture_delay"><span data-toggle="tooltip" title="{{ desc_payment_payzen_capture_delay }}">{{ entry_payment_payzen_capture_delay }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_capture_delay" name="payment_payzen_multi_capture_delay" placeholder="{{ entry_payment_payzen_capture_delay }}" value="{{ payment_payzen_multi_capture_delay }}" />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_validation_mode"><span data-toggle="tooltip" title="{{ desc_payment_payzen_validation_mode }}">{{ entry_payment_payzen_validation_mode }}</span></label>
+                  <div class="col-sm-10">
+                    <select class="form-select" id="payment_payzen_multi_validation_mode" name="payment_payzen_multi_validation_mode">
+                      <option {% if payment_payzen_multi_validation_mode == '' %} selected="selected" {% endif %} value=''>{{ text_payment_payzen_default }}</option>
+                      <option {% if payment_payzen_multi_validation_mode == '0' %} selected="selected" {% endif %} value='0'>{{ text_payment_payzen_automatic }}</option>
+                      <option {% if payment_payzen_multi_validation_mode == '1' %} selected="selected" {% endif %} value='1'>{{ text_payment_payzen_manual }}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_payment_cards"><span data-toggle="tooltip" title="{{ desc_payment_payzen_payment_cards }}">{{ entry_payment_payzen_payment_cards }}</span></label>
+                  <div class="col-sm-10">
+                    <select class="form-select" id="payment_payzen_multi_payment_cards" name="payment_payzen_multi_payment_cards[]" multiple="multiple" size="7" style="height: auto;">
+                    {% if payment_payzen_multi_payment_cards is empty %}
+                      {% set payment_payzen_multi_payment_cards = [] %}
+                    {% else %}
+                      {% set payment_payzen_multi_payment_cards = payment_payzen_multi_payment_cards|split(';') %}
+                    {% endif %}
+
+                    {% for code, label in payment_payzen_multi_payment_card_options %}
+                      {% if code in payment_payzen_multi_payment_cards %}
+                        <option selected="selected" value="{{ code }}">{{ code }} - {{ label }}</option>
+                      {% else %}
+                        <option value="{{ code }}">{{ code }} - {{ label }}</option>
+                      {% endif %}
+                    {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend><font style="font-weight: bold;">{{ section_payment_payzen_selective_3ds }}</font></legend>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_3ds_min_amount"><span data-toggle="tooltip" title="{{ desc_payment_payzen_3ds_min_amount }}">{{ entry_payment_payzen_3ds_min_amount }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_3ds_min_amount" name="payment_payzen_multi_3ds_min_amount" placeholder="{{ entry_payment_payzen_3ds_min_amount }}" value="{{ payment_payzen_multi_3ds_min_amount }}" />
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend><font style="font-weight: bold;">{{ section_payment_payzen_return_to_shop }}</font></legend>
+                <div class="row mb-2" >
+                  <label class="col-sm-2 col-form-label"><span data-toggle="tooltip" title="{{ desc_payment_payzen_redirect_enabled }}">{{ entry_payment_payzen_redirect_enabled }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="radio" {% if payment_payzen_multi_redirect_enabled == '0' %} checked="checked" {% endif %} value='0' name="payment_payzen_multi_redirect_enabled" id="payment_payzen_multi_redirect_enabled_0"><label for="payment_payzen_multi_redirect_enabled_0">{{ text_payment_payzen_no }}</label>
+                    <input type="radio" {% if payment_payzen_multi_redirect_enabled == '1' %} checked="checked" {% endif %} value='1' name="payment_payzen_multi_redirect_enabled" id="payment_payzen_multi_redirect_enabled_1"><label for="payment_payzen_multi_redirect_enabled_1">{{ text_payment_payzen_yes }}</label>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_redirect_success_timeout"><span data-toggle="tooltip" title="{{ desc_payment_payzen_redirect_success_timeout }}">{{ entry_payment_payzen_redirect_success_timeout }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_redirect_success_timeout" name="payment_payzen_multi_redirect_success_timeout" placeholder="{{ entry_payment_payzen_redirect_success_timeout }}" value="{{ payment_payzen_multi_redirect_success_timeout }}" />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_redirect_success_message"><span data-toggle="tooltip" title="{{ desc_payment_payzen_redirect_success_message }}">{{ entry_payment_payzen_redirect_success_message }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_redirect_success_message" name="payment_payzen_multi_redirect_success_message" placeholder="{{ entry_payment_payzen_redirect_success_message }}" value="{{ payment_payzen_multi_redirect_success_message }}" size="50" />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_redirect_error_timeout"><span data-toggle="tooltip" title="{{ desc_payment_payzen_redirect_error_timeout }}">{{ entry_payment_payzen_redirect_error_timeout }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_redirect_error_timeout" name="payment_payzen_multi_redirect_error_timeout" placeholder="{{ entry_payment_payzen_redirect_error_timeout }}" value="{{ payment_payzen_multi_redirect_error_timeout }}" />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_redirect_error_message"><span data-toggle="tooltip" title="{{ desc_payment_payzen_redirect_error_message }}">{{ entry_payment_payzen_redirect_error_message }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_redirect_error_message" name="payment_payzen_multi_redirect_error_message" placeholder="{{ entry_payment_payzen_redirect_error_message }}" value="{{ payment_payzen_multi_redirect_error_message }}" size="50" />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_return_mode"><span data-toggle="tooltip" title="{{ desc_payment_payzen_return_mode }}">{{ entry_payment_payzen_return_mode }}</span></label>
+                  <div class="col-sm-10">
+                    <select class="form-select" id="payment_payzen_multi_return_mode" name="payment_payzen_multi_return_mode">
+                      <option {% if payment_payzen_multi_return_mode == 'POST' %} selected="selected" {% endif %} value="POST">POST</option>
+                      <option {% if payment_payzen_multi_return_mode == 'GET' %} selected="selected" {% endif %} value="GET">GET</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="tab-pane" id="tab-specific">
+              <fieldset>
+                <legend><font style="font-weight: bold;">{{ section_payment_payzen_display_options }}</font></legend>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_status"><span data-toggle="tooltip" title="{{ desc_payment_payzen_status }}">{{ entry_payment_payzen_status }}</span></label>
+                  <div class="col-sm-10">
+                    <select class="form-select" id="input-status" name="payment_payzen_multi_status">
+                      {% if payment_payzen_multi_status %}
+                        <option value="1" selected="selected">{{ text_enabled }}</option>
+                        <option value="0">{{ text_disabled }}</option>
+                      {% else %}
+                        <option value="1">{{ text_enabled }}</option>
+                        <option value="0" selected="selected">{{ text_disabled }}</option>
+                      {% endif %}
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_sort_order"><span data-toggle="tooltip" title="{{ desc_payment_payzen_sort_order }}">{{ entry_payment_payzen_sort_order }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_sort_order" name="payment_payzen_multi_sort_order" placeholder="{{ entry_payment_payzen_sort_order }}" value="{{ payment_payzen_multi_sort_order }}" size="3" />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_geo_zone"><span data-toggle="tooltip" title="{{ desc_payment_payzen_geo_zone }}">{{ entry_payment_payzen_geo_zone }}</span></label>
+                  <div class="col-sm-10">
+                    <select class="form-select" id="payment_payzen_multi_geo_zone" name="payment_payzen_multi_geo_zone">
+                      <option value="0">{{ text_all_zones }}</option>
+                      {% for geo_zone in geo_zones %}
+                        {% if geo_zone.geo_zone_id == payment_payzen_multi_geo_zone %}
+                          <option selected="selected" value="{{ geo_zone.geo_zone_id }}" >{{ geo_zone.name }}</option>
+                        {% else %}
+                          <option value="{{ geo_zone.geo_zone_id }}" >{{ geo_zone.name }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-2">
+	              <label class="col-sm-2 col-form-label" for="payment_payzen_multi_enable_logs"><span data-toggle="tooltip" title="{{ desc_payment_payzen_enable_logs }}">{{ entry_payment_payzen_enable_logs }}</span></label>
+	              <div class="col-sm-10">
+	                <select class="form-select" id="payment_payzen_multi_enable_logs" name="payment_payzen_multi_enable_logs">
+	                  <option {% if payment_payzen_multi_enable_logs %} selected="selected" {% endif %} value="1">{{ text_enabled }}</option>
+	                  <option {% if not payment_payzen_multi_enable_logs %} selected="selected" {% endif %} value="0">{{ text_disabled }}</option>
+	                </select>
+	              </div>
+	            </div>
+              </fieldset>
+
+              <fieldset>
+                <legend><font style="font-weight: bold;">{{ section_payment_payzen_restrictions }}</font></legend>
+                <div class="row mb-2"> 
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_min_amount"><span data-toggle="tooltip" title="{{ desc_payment_payzen_min_amount }}">{{ entry_payment_payzen_min_amount }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_min_amount" name="payment_payzen_multi_min_amount" placeholder="{{ entry_payment_payzen_min_amount }}" value="{{ payment_payzen_multi_min_amount }}" />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_max_amount"><span data-toggle="tooltip" title="{{ desc_payment_payzen_max_amount }}">{{ entry_payment_payzen_max_amount }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_max_amount" name="payment_payzen_multi_max_amount" placeholder="{{ entry_payment_payzen_max_amount }}" value="{{ payment_payzen_multi_max_amount }}" />
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend><font style="font-weight: bold;">{{ section_payment_payzen_multi_options }}</font></legend>
+                <div class="row mb-2"> 
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_first"><span data-toggle="tooltip" title="{{ desc_payment_payzen_multi_first }}">{{ entry_payment_payzen_multi_first }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_first" name="payment_payzen_multi_first" placeholder="{{ entry_payment_payzen_multi_first }}" value="{{ payment_payzen_multi_first }}" />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_count"><span data-toggle="tooltip" title="{{ desc_payment_payzen_multi_count }}">{{ entry_payment_payzen_multi_count }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_count" name="payment_payzen_multi_count" placeholder="{{ entry_payment_payzen_multi_count }}" value="{{ payment_payzen_multi_count }}" />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_period"><span data-toggle="tooltip" title="{{ desc_payment_payzen_multi_period }}">{{ entry_payment_payzen_multi_period }}</span></label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="payment_payzen_multi_period" name="payment_payzen_multi_period" placeholder="{{ entry_payment_payzen_multi_period }}" value="{{ payment_payzen_multi_period }}" />
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="tab-pane" id="tab-orders">
+              <fieldset>
+                <legend><font style="font-weight: bold;">{{ section_payment_payzen_orders }}</font></legend>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_order_status_success">{{ entry_payment_payzen_order_status_success }}</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" name="payment_payzen_multi_order_status_success" id="payment_payzen_multi_order_status_success">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_payzen_multi_order_status_success %}
+                        <option selected="selected" value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
+                      {% else %}
+                        <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                      {% endif %}
+                    {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_order_status_failed">{{ entry_payment_payzen_order_status_failed }}</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" name="payment_payzen_multi_order_status_failed" id="payment_payzen_multi_order_status_failed">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_payzen_multi_order_status_failed %}
+                        <option selected="selected" value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
+                      {% else %}
+                        <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                      {% endif %}
+                    {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label" for="payment_payzen_multi_order_status_canceled">{{ entry_payment_payzen_order_status_canceled }}</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" name="payment_payzen_multi_order_status_canceled" id="payment_payzen_multi_order_status_canceled">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_payzen_multi_order_status_canceled %}
+                        <option selected="selected" value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
+                      {% else %}
+                        <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                      {% endif %}
+                    {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend><font style="font-weight: bold;">{{ section_payment_payzen_notifications }}</font></legend>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label">{{ entry_payment_payzen_notify_failed }}</label>
+                  <div class="col-sm-10">
+                    <input type="radio" {% if payment_payzen_multi_notify_failed == '0' %} checked="checked" {% endif %} value="0" name="payment_payzen_multi_notify_failed" id="payment_payzen_multi_notify_failed_0"><label for="payment_payzen_multi_notify_failed_0">{{ text_payment_payzen_no }}</label>
+                    <input type="radio" {% if payment_payzen_multi_notify_failed == '1' %} checked="checked" {% endif %} value="1" name="payment_payzen_multi_notify_failed" id="payment_payzen_multi_notify_failed_1"><label for="payment_payzen_multi_notify_failed_1">{{ text_payment_payzen_yes }}</label>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <label class="col-sm-2 col-form-label">{{ entry_payment_payzen_notify_canceled }}</label>
+                  <div class="col-sm-10">
+                    <input type="radio" {% if payment_payzen_multi_notify_canceled == '0'%} checked="checked"' {% endif %} value="0" name="payment_payzen_multi_notify_canceled" id="payment_payzen_multi_notify_canceled_0"><label for="payment_payzen_multi_notify_canceled_0">{{ text_payment_payzen_no }}</label>
+                    <input type="radio" {% if payment_payzen_multi_notify_canceled == '1'%} checked="checked"' {% endif %} value="1" name="payment_payzen_multi_notify_canceled" id="payment_payzen_multi_notify_canceled_1"><label for="payment_payzen_multi_notify_canceled_1">{{ text_payment_payzen_yes }}</label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endif %}
+</div>
+
+{{ footer }}
